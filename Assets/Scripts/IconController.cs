@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(CanvasGroup))]
-public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     private Canvas canvas; // 座標変換用
     private RectTransform rect; // 自分のRectTransform
@@ -26,6 +28,13 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private Vector2 pointerOffset; // ドラッグ開始時のマウス位置とカード位置の差分
     private Camera UiCam() => canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
 
+
+    [Header("ダブルクリック用変数")]
+    private int clickCount;
+    private bool flg = false;
+    public float DoubleClickIntervalTime = 0.3f;
+
+
     void Awake()
     {
         rect = GetComponent<RectTransform>();
@@ -39,6 +48,60 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             homeSiblingIndex = rect.GetSiblingIndex();
         }
     }
+
+
+    void Start()
+    {
+        clickCount = 0;
+        flg = false;
+    }
+
+    /// <summary>
+    /// クリックの感知
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        clickCount++;
+        if (clickCount == 1)
+        {
+            Invoke("OnDoubleClick", DoubleClickIntervalTime); //一定時間後にダブルクリックされたか判定を呼び出す
+        }
+    }
+
+
+    /// <summary>
+    /// ダブルクリックの判定とダブルクリック時の処理呼び出し関数
+    /// </summary>
+    private void OnDoubleClick()
+    {
+        if (clickCount >= 2)
+        {
+            Debug.Log("ダブルクリックされたぞ！");
+            OpenWindow();
+        }
+
+        
+        clickCount = 0;
+    }
+
+    /// <summary>
+    /// ダブルクリック時のウィンドウを開く処理実行関数
+    /// </summary>
+    private void OpenWindow()
+    {
+        if (flg == false)
+        {
+            transform.DOScale(new Vector3(1f, 1f, 1f), 0f);
+            flg = true;
+        }
+        else
+        {
+            transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0f);
+            flg = false;
+        }
+    }
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
