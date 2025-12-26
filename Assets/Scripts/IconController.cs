@@ -9,6 +9,9 @@ using DG.Tweening;
 [RequireComponent(typeof(CanvasGroup))]
 public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
+    [Header("アイコンに対応するウィンドウオブジェクトを入力")]
+    public GameObject windowObj;
+
     private Canvas canvas; // 座標変換用
     private RectTransform rect; // 自分のRectTransform
     private CanvasGroup canvasGroup; // Raycastの制御用
@@ -25,7 +28,13 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private bool dropped = false; // ドロップされたか
     public void MarkDropped() => dropped = true;
 
-    private Vector2 pointerOffset; // ドラッグ開始時のマウス位置とカード位置の差分
+    // クリックとドラッグとの競合回避用
+    public bool isDragging = false; //ドラッグ中かどうか（クリックと競合させないため）
+    private Vector2 pointerDownPos;
+    [Header("ドラッグ開始の移動閾値")]
+    [SerializeField] private float dragThreshold = 10f;
+
+    private Vector2 pointerOffset; // ドラッグ開始時のマウス位置とアイコン位置の差分
     private Camera UiCam() => canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
 
 
@@ -53,6 +62,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     void Start()
     {
         clickCount = 0;
+        isDragging = false;
         flg = false;
     }
 
@@ -62,6 +72,9 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
+        pointerDownPos = eventData.position;
+        if (isDragging) return; //ドラッグ中ならこの処理は無視
+
         clickCount++;
         if (clickCount == 1)
         {
@@ -93,6 +106,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (flg == false)
         {
             transform.DOScale(new Vector3(1f, 1f, 1f), 0f);
+            windowObj.gameObject.SetActive(true);
             flg = true;
         }
         else
@@ -105,6 +119,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        isDragging = true;
         originalParent = rect.parent;
         startAnchorPos = rect.anchoredPosition;
         startSiblingIndex = rect.GetSiblingIndex();
@@ -127,6 +142,20 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!isDragging)
+        {
+            // 閾値を超えたマウス移動があれば、ドラッグ扱いにする
+            if (Vector2.Distance(pointerDownPos, eventData.position) > dragThreshold)
+            {
+                isDragging = true;
+            }
+            else
+            {
+                return; // まだクリック扱い
+            }
+        }
+
+        //以下からドラッグ中の処理
         var parentRect = rect.parent as RectTransform;
         if (parentRect != null &&
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, eventData.position, UiCam(), out var pLocal))
@@ -137,6 +166,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1.0f;
 
