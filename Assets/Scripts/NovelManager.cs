@@ -23,10 +23,39 @@ namespace NovelGame
         /// </summary>
         private void Awake()
         {
+            Debug.Log("OKノベルパートの初期化・セットアップが実行されました");
             // これで、別クラスからGameManagerの変数などを使えるようにする
             Instance = this;
+        }
 
+
+        /// <summary>
+        /// ノベルパートを呼び出すための関数。ここですべての初期化も行う。
+        /// </summary>
+        public void StartNovel()
+        {
+            Debug.Log("ノベルパート呼び出し関数！");
+            // 進行状態の初期化
             line_number = 0;
+
+            // 表示状態(MemoryTextController、MemoryImageManager)の初期化
+            image_manager.RemoveImage("all");
+            main_text_controller.ClearText();
+
+            // UserScriptManagerの初期化呼び出し
+            user_script_manager.ResetState();
+
+            // 最初の行を処理の実行開始！
+            main_text_controller.GoToTheNextLine();
+        }
+
+
+        public void End()
+        {
+            Debug.Log("終了処理実行");
+            image_manager.RemoveImage("all"); // すべての画像を削除する
+            main_text_controller.ClearText();
+            this.gameObject.SetActive(false);
         }
     }
 }

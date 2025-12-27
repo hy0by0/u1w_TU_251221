@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEditor.Rendering.PostProcessing;
+using UnityEngine;
 
 
 namespace NovelGame
@@ -19,19 +20,10 @@ namespace NovelGame
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("文字送りなどの初期設定が実行されました");
             _time = 0f;
             _feedTime = 0.05f;
-
-            // 最初の行のテキストを表示、または命令を実行
-            string statement = NovelManager.Instance.user_script_manager.GetCurrentSentence();
-            if (NovelManager.Instance.user_script_manager.IsStatement(statement)) //その行の文章命令文判定なら
-            {
-                // 命令文の実行をUserScriptManagerにて実行
-                NovelManager.Instance.user_script_manager.ExecuteStatement(statement);
-            }
-
-            // 最初の行のテキストを表示
-            DisplayText();
+            //DisplayText();
         }
 
 
@@ -128,6 +120,27 @@ namespace NovelGame
             _mainTextObject.text = textsentence;
             _nameTextObject.text = namesentence;
         }
+
+
+        /// <summary>
+        /// 初期化の関数。最初に呼び出されるときに実行されるようにする
+        /// </summary>
+        public void ClearText()
+        {
+            Debug.Log("テキストコントローラー初期化");
+
+            // 最初の行のテキストを表示、または命令を実行
+            string statement = NovelManager.Instance.user_script_manager.GetCurrentSentence();
+            if (NovelManager.Instance.user_script_manager.IsStatement(statement)) //その行の文章命令文判定なら
+            {
+                // 命令文の実行をUserScriptManagerにて実行
+                NovelManager.Instance.user_script_manager.ExecuteStatement(statement);
+            }
+
+            // 最初の行のテキストを表示
+            DisplayText();
+        }
+
 
     }
 

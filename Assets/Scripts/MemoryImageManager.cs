@@ -29,6 +29,7 @@ namespace NovelGame
         /// </summary>
         void Awake()
         {
+            Debug.Log("画像マネージャーの初期設定が完了しました");
             //テキスト→スプライトの初期化と画像の追加
             _textToSprite = new Dictionary<string, Sprite>();
             _textToSprite.Add("background1", _background1);
@@ -128,14 +129,25 @@ namespace NovelGame
             item.transform.SetSiblingIndex(siblingIndex);
         }
 
-
-
         /// <summary>
         /// 画像の削除メソッド
         /// </summary>
         /// <param name="imageName">対象の画像</param>
         public void RemoveImage(string imageName)
         {
+            // すべて削除
+            if (imageName == "all")
+            {
+                Debug.Log("画像初期化の実行");
+                foreach (var item in _textToSpriteObject)
+                {
+                    Destroy(item.Item2);
+                }
+
+                _textToSpriteObject.Clear(); // 中身を空にする
+                return;
+            }
+
             var existingObjects = _textToSpriteObject.FindAll(item => item.Item1 == imageName);
             foreach (var existingObject in existingObjects)
             {

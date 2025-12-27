@@ -11,3 +11,4 @@ com,putImage,B_face,eventObject,1,0,-50,100
 com,removeImage,A_face,,,,,
 com,removeImage,B_face,,,,,
 ,,よろしくね■■■,,,,,
+com,end,,,,,,

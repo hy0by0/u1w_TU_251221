@@ -16,10 +16,12 @@ namespace NovelGame
 
         List<string> _sentences = new List<string>(); // 読み込んだ文章を格納するリスト
         public bool isWaiting = false; // ウェイト中かどうかのフラグ
-                                       // スクリプトの初期化時に実行されるメソッド
+        
+        // スクリプトの初期化時に実行されるメソッド。ここは毎回呼び出さなくともシーンの最初のみに実行すれば良い。
         void Awake()
         {
-            // テキストファイルから文章を一行ずつ読み込んでリストに格納する
+            Debug.Log("無事にテキストファイルが読み込まれました");
+            // テキストファイルから文章を一行ずつ読み込んでリストに格納する。ここで文書を保持する。
             StringReader reader = new StringReader(_textFile.text);
             while (reader.Peek() != -1)
             {
@@ -79,6 +81,12 @@ namespace NovelGame
             // 単語によって処理を分岐する。追加事項ができたらここを更新すること。
             switch (words[1])
             {
+                case "end": // endステートメントの場合
+
+                    Debug.Log("終了コマンドが読み込まれました");
+                    NovelManager.Instance.End();
+                    break;
+
                 case "putImage": // putImageステートメントの場合
 
                     int layerOrder = ConvertToInt(words[4], 10000);
@@ -99,6 +107,18 @@ namespace NovelGame
                     break;
             }
         }
+
+
+        /// <summary>
+        /// 状態の初期化
+        /// </summary>
+        public void ResetState()
+        {
+            Debug.Log("UserScriptManagerの状態の初期化がされました");
+            isWaiting = false;
+        }
+
+
 
     }
 
