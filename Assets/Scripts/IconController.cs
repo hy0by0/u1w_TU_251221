@@ -40,7 +40,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [Header("ダブルクリック用変数")]
     private int clickCount;
-    private bool flg = false;
+    private bool flg = false; //不要かも
     public float DoubleClickIntervalTime = 0.3f;
 
 
@@ -103,17 +103,11 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     /// </summary>
     private void OpenWindow()
     {
-        if (flg == false)
+        if (!windowObj.activeInHierarchy)
         {
-            transform.DOScale(new Vector3(1f, 1f, 1f), 0f);
             windowObj.gameObject.SetActive(true);
-            flg = true;
         }
-        else
-        {
-            transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0f);
-            flg = false;
-        }
+
     }
 
 
