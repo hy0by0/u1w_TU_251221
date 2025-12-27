@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,38 +9,37 @@ using DG.Tweening;
 [RequireComponent(typeof(CanvasGroup))]
 public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-    [Header("ƒAƒCƒRƒ“‚É‘Î‰‚·‚éƒEƒBƒ“ƒhƒEƒIƒuƒWƒFƒNƒg‚ğ“ü—Í")]
+    [Header("ã‚¢ã‚¤ã‚³ãƒ³ã«å¯¾å¿œã™ã‚‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¥åŠ›")]
     public GameObject windowObj;
 
-    private Canvas canvas; // À•W•ÏŠ·—p
-    private RectTransform rect; // ©•ª‚ÌRectTransform
-    private CanvasGroup canvasGroup; // Raycast‚Ì§Œä—p
-    [SerializeField] private Transform homeParent; // Œ³‚Ìe
-    private Vector2 homeAnchorPos; // Œ³‚ÌˆÊ’u
-    private int homeSiblingIndex; // Å‰‚Ì•À‚Ñ‡
+    private Canvas canvas; // åº§æ¨™å¤‰æ›ç”¨
+    private RectTransform rect; // è‡ªåˆ†ã®RectTransform
+    private CanvasGroup canvasGroup; // Raycastã®åˆ¶å¾¡ç”¨
+    [SerializeField] private Transform homeParent; // å…ƒã®è¦ª
+    private Vector2 homeAnchorPos; // å…ƒã®ä½ç½®
+    private int homeSiblingIndex; // æœ€åˆã®ä¸¦ã³é †
 
-    // ƒhƒ‰ƒbƒO‚²‚Æ‚Ì•œŒ³—p
-    private Transform originalParent; // ƒhƒ‰ƒbƒOŠJn‚Ìe
-    private Vector2 startAnchorPos; // Œ³‚ÌˆÊ’u
+    // ãƒ‰ãƒ©ãƒƒã‚°ã”ã¨ã®å¾©å…ƒç”¨
+    private Transform originalParent; // ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹æ™‚ã®è¦ª
+    private Vector2 startAnchorPos; // å…ƒã®ä½ç½®
     private int startSiblingIndex;
-    private bool wasInDropZone; // ƒhƒƒbƒvƒ][ƒ“‚É“ü‚Á‚Ä‚¢‚½‚©
+    private bool wasInDropZone; // ãƒ‰ãƒ­ãƒƒãƒ—ã‚¾ãƒ¼ãƒ³ã«å…¥ã£ã¦ã„ãŸã‹
 
-    private bool dropped = false; // ƒhƒƒbƒv‚³‚ê‚½‚©
+    private bool dropped = false; // ãƒ‰ãƒ­ãƒƒãƒ—ã•ã‚ŒãŸã‹
     public void MarkDropped() => dropped = true;
 
-    // ƒNƒŠƒbƒN‚Æƒhƒ‰ƒbƒO‚Æ‚Ì‹£‡‰ñ”ğ—p
-    public bool isDragging = false; //ƒhƒ‰ƒbƒO’†‚©‚Ç‚¤‚©iƒNƒŠƒbƒN‚Æ‹£‡‚³‚¹‚È‚¢‚½‚ßj
+    // ã‚¯ãƒªãƒƒã‚¯ã¨ãƒ‰ãƒ©ãƒƒã‚°ã¨ã®ç«¶åˆå›é¿ç”¨
+    public bool isDragging = false; //ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã‹ã©ã†ã‹ï¼ˆã‚¯ãƒªãƒƒã‚¯ã¨ç«¶åˆã•ã›ãªã„ãŸã‚ï¼‰
     private Vector2 pointerDownPos;
-    [Header("ƒhƒ‰ƒbƒOŠJn‚ÌˆÚ“®è‡’l")]
+    [Header("ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹ã®ç§»å‹•é–¾å€¤")]
     [SerializeField] private float dragThreshold = 10f;
 
-    private Vector2 pointerOffset; // ƒhƒ‰ƒbƒOŠJn‚Ìƒ}ƒEƒXˆÊ’u‚ÆƒAƒCƒRƒ“ˆÊ’u‚Ì·•ª
+    private Vector2 pointerOffset; // ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹æ™‚ã®ãƒã‚¦ã‚¹ä½ç½®ã¨ã‚¢ã‚¤ã‚³ãƒ³ä½ç½®ã®å·®åˆ†
     private Camera UiCam() => canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
 
 
-    [Header("ƒ_ƒuƒ‹ƒNƒŠƒbƒN—p•Ï”")]
+    [Header("ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ç”¨å¤‰æ•°")]
     private int clickCount;
-    private bool flg = false; //•s—v‚©‚à
     public float DoubleClickIntervalTime = 0.3f;
 
 
@@ -63,34 +62,33 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         clickCount = 0;
         isDragging = false;
-        flg = false;
     }
 
     /// <summary>
-    /// ƒNƒŠƒbƒN‚ÌŠ´’m
+    /// ã‚¯ãƒªãƒƒã‚¯ã®æ„ŸçŸ¥
     /// </summary>
     /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
         pointerDownPos = eventData.position;
-        if (isDragging) return; //ƒhƒ‰ƒbƒO’†‚È‚ç‚±‚Ìˆ—‚Í–³‹
+        if (isDragging) return; //ãƒ‰ãƒ©ãƒƒã‚°ä¸­ãªã‚‰ã“ã®å‡¦ç†ã¯ç„¡è¦–
 
         clickCount++;
         if (clickCount == 1)
         {
-            Invoke("OnDoubleClick", DoubleClickIntervalTime); //ˆê’èŠÔŒã‚Éƒ_ƒuƒ‹ƒNƒŠƒbƒN‚³‚ê‚½‚©”»’è‚ğŒÄ‚Ño‚·
+            Invoke("OnDoubleClick", DoubleClickIntervalTime); //ä¸€å®šæ™‚é–“å¾Œã«ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã‹åˆ¤å®šã‚’å‘¼ã³å‡ºã™
         }
     }
 
 
     /// <summary>
-    /// ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Ì”»’è‚Æƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Ìˆ—ŒÄ‚Ño‚µŠÖ”
+    /// ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã®åˆ¤å®šã¨ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯æ™‚ã®å‡¦ç†å‘¼ã³å‡ºã—é–¢æ•°
     /// </summary>
     private void OnDoubleClick()
     {
         if (clickCount >= 2)
         {
-            Debug.Log("ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚³‚ê‚½‚¼I");
+            Debug.Log("ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸãï¼");
             OpenWindow();
         }
 
@@ -99,9 +97,9 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     }
 
     /// <summary>
-    /// ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚ÌƒEƒBƒ“ƒhƒE‚ğŠJ‚­ˆ—ÀsŠÖ”
+    /// ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯æ™‚ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‹ãå‡¦ç†å®Ÿè¡Œé–¢æ•°
     /// </summary>
-    private void OpenWindow()
+    public void OpenWindow()
     {
         if (!windowObj.activeInHierarchy)
         {
@@ -126,11 +124,11 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             pointerOffset = rect.anchoredPosition - pLocal;
         }
 
-        // ƒhƒ‰ƒbƒO’†‚Íˆê”Ôã‚É•\¦
+        // ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã¯ä¸€ç•ªä¸Šã«è¡¨ç¤º
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.85f;
 
-        // Å‘O–Ê‚É
+        // æœ€å‰é¢ã«
         rect.SetAsLastSibling();
     }
 
@@ -138,18 +136,18 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         if (!isDragging)
         {
-            // è‡’l‚ğ’´‚¦‚½ƒ}ƒEƒXˆÚ“®‚ª‚ ‚ê‚ÎAƒhƒ‰ƒbƒOˆµ‚¢‚É‚·‚é
+            // é–¾å€¤ã‚’è¶…ãˆãŸãƒã‚¦ã‚¹ç§»å‹•ãŒã‚ã‚Œã°ã€ãƒ‰ãƒ©ãƒƒã‚°æ‰±ã„ã«ã™ã‚‹
             if (Vector2.Distance(pointerDownPos, eventData.position) > dragThreshold)
             {
                 isDragging = true;
             }
             else
             {
-                return; // ‚Ü‚¾ƒNƒŠƒbƒNˆµ‚¢
+                return; // ã¾ã ã‚¯ãƒªãƒƒã‚¯æ‰±ã„
             }
         }
 
-        //ˆÈ‰º‚©‚çƒhƒ‰ƒbƒO’†‚Ìˆ—
+        //ä»¥ä¸‹ã‹ã‚‰ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã®å‡¦ç†
         var parentRect = rect.parent as RectTransform;
         if (parentRect != null &&
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, eventData.position, UiCam(), out var pLocal))
@@ -166,14 +164,14 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         if (dropped)
         {
-            // DropZone‚É”z’u‚³‚ê‚½ê‡AƒAƒ“ƒJ[‚ğ’†‰›‚É’²®
+            // DropZoneã«é…ç½®ã•ã‚ŒãŸå ´åˆã€ã‚¢ãƒ³ã‚«ãƒ¼ã‚’ä¸­å¤®ã«èª¿æ•´
             if (rect.parent.TryGetComponent<DropZone>(out var dropZone))
             {
-                // ƒAƒ“ƒJ[‚ğ’†‰›‚Éİ’è
+                // ã‚¢ãƒ³ã‚«ãƒ¼ã‚’ä¸­å¤®ã«è¨­å®š
                 rect.anchorMin = new Vector2(0.5f, 0.5f);
                 rect.anchorMax = new Vector2(0.5f, 0.5f);
 
-                // ˆÊ’u‚ğ’†‰›‚É’²®
+                // ä½ç½®ã‚’ä¸­å¤®ã«èª¿æ•´
                 rect.anchoredPosition = Vector2.zero;
 
                 rect.localScale = Vector3.one * 0.8f;
@@ -185,7 +183,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             {
                 rect.localScale = Vector3.one;
 
-                // ƒAƒ“ƒJ[‚ğ¶ã‚É–ß‚·
+                // ã‚¢ãƒ³ã‚«ãƒ¼ã‚’å·¦ä¸Šã«æˆ»ã™
                 rect.anchorMin = new Vector2(0f, 1f);
                 rect.anchorMax = new Vector2(0f, 1f);
 
@@ -203,7 +201,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         dropped = false;
     }
 
-    // ƒXƒNƒŠƒvƒg‚©‚ç–¾¦“I‚ÉHome‚É–ß‚·—p
+    // ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰æ˜ç¤ºçš„ã«Homeã«æˆ»ã™æ™‚ç”¨
     public void ReturnToHome()
     {
         rect.SetParent(homeParent, worldPositionStays: false);

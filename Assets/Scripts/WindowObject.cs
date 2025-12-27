@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class WindowObject : MonoBehaviour, IDragHandler, IBeginDragHandler
 {
-    private RectTransform rectTransform; // ˆÚ“®‚µ‚½‚¢ƒIƒuƒWƒFƒNƒg‚ÌRectTransform
-    private RectTransform parentRectTransform; // ˆÚ“®‚µ‚½‚¢ƒIƒuƒWƒFƒNƒg‚Ìe‚ÌRectTransform
+    private RectTransform rectTransform; // ç§»å‹•ã—ãŸã„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®RectTransform
+    private RectTransform parentRectTransform; // ç§»å‹•ã—ãŸã„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã®RectTransform
     private Vector2 offset;
-    [Header("§ŒÀ‚µ‚½‚¢‹““®")]
+    [Header("åˆ¶é™ã—ãŸã„æŒ™å‹•")]
     public bool canDrag = true;
     public bool canClose = true;
 
@@ -16,7 +16,7 @@ public class WindowObject : MonoBehaviour, IDragHandler, IBeginDragHandler
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        parentRectTransform = rectTransform.parent as RectTransform; //eƒIƒuƒWƒFƒNƒg‚ğæ“¾
+        parentRectTransform = rectTransform.parent as RectTransform; //è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
     }
 
     // Update is called once per frame
@@ -25,23 +25,23 @@ public class WindowObject : MonoBehaviour, IDragHandler, IBeginDragHandler
 
     }
 
-    // ƒhƒ‰ƒbƒOŠJn‚Ìˆ—
+    // ãƒ‰ãƒ©ãƒƒã‚°é–‹å§‹æ™‚ã®å‡¦ç†
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!canDrag) return;
 
-        //ƒhƒ‰ƒbƒOˆÊ’u‚Ì•â³’l‚ğæ“¾
+        //ãƒ‰ãƒ©ãƒƒã‚°ä½ç½®ã®è£œæ­£å€¤ã‚’å–å¾—
         offset = (Vector2)rectTransform.anchoredPosition - GetLocalPosition(eventData.position);
 
     }
 
-    // ƒhƒ‰ƒbƒO’†‚Ìˆ—
+    // ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã®å‡¦ç†
     public void OnDrag(PointerEventData eventData)
     {
         if (!canDrag) return;
 
-        // eventData.position‚©‚çAe‚É]‚¤localPosition‚Ö‚Ì•ÏŠ·‚ğs‚¤
-        // ƒIƒuƒWƒFƒNƒg‚ÌˆÊ’u‚ğlocalPosition‚É•ÏX‚·‚é
+        // eventData.positionã‹ã‚‰ã€è¦ªã«å¾“ã†localPositionã¸ã®å¤‰æ›ã‚’è¡Œã†
+        // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½ç½®ã‚’localPositionã«å¤‰æ›´ã™ã‚‹
 
         Vector2 localPosition = GetLocalPosition(eventData.position);
         rectTransform.anchoredPosition = localPosition + this.offset;
@@ -51,13 +51,13 @@ public class WindowObject : MonoBehaviour, IDragHandler, IBeginDragHandler
     {
         Vector2 result = Vector2.zero;
 
-        // screenPosition‚ğe‚ÌÀ•WŒn(parentRectTransform)‚É‘Î‰‚·‚é‚æ‚¤•ÏŠ·
+        // screenPositionã‚’è¦ªã®åº§æ¨™ç³»(parentRectTransform)ã«å¯¾å¿œã™ã‚‹ã‚ˆã†å¤‰æ›
         RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTransform, screenPosition, Camera.main, out result);
 
         return result;
     }
 
-    // ’Ç‰Á
+    // è¿½åŠ 
     public void CloseWindow()
     {
         if (!canClose) return;
