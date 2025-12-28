@@ -20,7 +20,7 @@ namespace NovelGame
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("文字送りなどの初期設定が実行されました");
+            Debug.Log("OK文字送りなどの初期設定が実行されました");
             _time = 0f;
             _feedTime = 0.05f;
             //DisplayText();
@@ -127,7 +127,7 @@ namespace NovelGame
         /// </summary>
         public void ClearText()
         {
-            Debug.Log("テキストコントローラー初期化");
+            Debug.Log("OKテキストコントローラー初期化");
 
             // 最初の行のテキストを表示、または命令を実行
             string statement = NovelManager.Instance.user_script_manager.GetCurrentSentence();

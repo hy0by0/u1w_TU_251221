@@ -14,13 +14,15 @@ namespace NovelGame
     {
         [SerializeField] TextAsset _textFile; // テキストファイルを格納するための変数
 
+        private bool isRunning = false; // 実行状態かどうか
+
         List<string> _sentences = new List<string>(); // 読み込んだ文章を格納するリスト
         public bool isWaiting = false; // ウェイト中かどうかのフラグ
         
         // スクリプトの初期化時に実行されるメソッド。ここは毎回呼び出さなくともシーンの最初のみに実行すれば良い。
         void Awake()
         {
-            Debug.Log("無事にテキストファイルが読み込まれました");
+            Debug.Log("OK無事にテキストファイルが読み込まれました");
             // テキストファイルから文章を一行ずつ読み込んでリストに格納する。ここで文書を保持する。
             StringReader reader = new StringReader(_textFile.text);
             while (reader.Peek() != -1)
@@ -76,6 +78,8 @@ namespace NovelGame
         /// <param name="sentence">該当する行の文章</param>
         public void ExecuteStatement(string sentence)
         {
+            if (!isRunning) return;
+
             string[] words = sentence.Split(','); // 文章を単語に分割する。何列目に何の情報を記載するか規定しておく。
 
             // 単語によって処理を分岐する。追加事項ができたらここを更新すること。
@@ -83,7 +87,8 @@ namespace NovelGame
             {
                 case "end": // endステートメントの場合
 
-                    Debug.Log("終了コマンドが読み込まれました");
+                    Debug.Log("OK終了コマンドが読み込まれました");
+                    StopRun();
                     NovelManager.Instance.End();
                     break;
 
@@ -110,11 +115,21 @@ namespace NovelGame
 
 
         /// <summary>
+        /// 処理をストップさせる。実行状態を解除する
+        /// </summary>
+        public void StopRun()
+        {
+            isRunning = false;
+        }
+
+
+        /// <summary>
         /// 状態の初期化
         /// </summary>
         public void ResetState()
         {
             Debug.Log("UserScriptManagerの状態の初期化がされました");
+            isRunning = true;
             isWaiting = false;
         }
 

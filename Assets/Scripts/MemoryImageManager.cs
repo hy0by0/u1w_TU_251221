@@ -29,7 +29,7 @@ namespace NovelGame
         /// </summary>
         void Awake()
         {
-            Debug.Log("画像マネージャーの初期設定が完了しました");
+            Debug.Log("OK画像マネージャーの初期設定が完了しました");
             //テキスト→スプライトの初期化と画像の追加
             _textToSprite = new Dictionary<string, Sprite>();
             _textToSprite.Add("background1", _background1);
@@ -138,7 +138,7 @@ namespace NovelGame
             // すべて削除
             if (imageName == "all")
             {
-                Debug.Log("画像初期化の実行");
+                Debug.Log("OK画像初期化の実行");
                 foreach (var item in _textToSpriteObject)
                 {
                     Destroy(item.Item2);
