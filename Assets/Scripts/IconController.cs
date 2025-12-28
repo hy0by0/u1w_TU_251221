@@ -102,7 +102,6 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OpenWindow()
     {
         windowObj.OpenWindow();
-
     }
 
 
