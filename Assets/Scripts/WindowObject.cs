@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NovelGame;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,6 +8,8 @@ public class WindowObject : MonoBehaviour, IDragHandler, IBeginDragHandler
 {
     private RectTransform rectTransform; // 移動したいオブジェクトのRectTransform
     private RectTransform parentRectTransform; // 移動したいオブジェクトの親のRectTransform
+    [Header("もし思い出ウィンドウなら、入れること")]
+    [SerializeField] private NovelManager novelManager;
     private Vector2 offset;
     [Header("制限したい挙動")]
     public bool canDrag = true;
@@ -57,6 +60,16 @@ public class WindowObject : MonoBehaviour, IDragHandler, IBeginDragHandler
         return result;
     }
 
+
+    public void OpenWindow()
+    {
+        gameObject.SetActive(true);
+
+        if (novelManager != null)
+        {
+            novelManager.StartNovel();
+        }
+    }
     // 追加
     public void CloseWindow()
     {

@@ -43,6 +43,7 @@ namespace NovelGame
         }
 
 
+
         /// <summary>
         /// 命令文かどうかを判定するメソッド
         /// </summary>
@@ -51,6 +52,7 @@ namespace NovelGame
         public bool IsStatement(string sentence)
         {
             string[] words = sentence.Split(','); // 文章を単語に分割する
+            Debug.Log($"[{words[0]}]");
 
             if (words[0] == "com") // A列目がcomの場合、命令とみなす
             {
@@ -78,6 +80,7 @@ namespace NovelGame
         /// <param name="sentence">該当する行の文章</param>
         public void ExecuteStatement(string sentence)
         {
+            Debug.Log("命令するぜえええええええ");
             if (!isRunning) return;
 
             string[] words = sentence.Split(','); // 文章を単語に分割する。何列目に何の情報を記載するか規定しておく。
@@ -94,6 +97,7 @@ namespace NovelGame
 
                 case "putImage": // putImageステートメントの場合
 
+                    Debug.Log("画像表示コマンド発動！！！");
                     int layerOrder = ConvertToInt(words[4], 10000);
                     int img_x = ConvertToInt(words[5]);
                     int img_y = ConvertToInt(words[6]);
@@ -128,7 +132,7 @@ namespace NovelGame
         /// </summary>
         public void ResetState()
         {
-            Debug.Log("UserScriptManagerの状態の初期化がされました");
+            Debug.Log("OK:UserScriptManagerの状態の初期化がされました");
             isRunning = true;
             isWaiting = false;
         }

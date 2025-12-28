@@ -10,7 +10,7 @@ using DG.Tweening;
 public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [Header("アイコンに対応するウィンドウオブジェクトを入力")]
-    public GameObject windowObj;
+    public WindowObject windowObj;
 
     private Canvas canvas; // 座標変換用
     private RectTransform rect; // 自分のRectTransform
@@ -101,10 +101,7 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     /// </summary>
     public void OpenWindow()
     {
-        if (!windowObj.activeInHierarchy)
-        {
-            windowObj.gameObject.SetActive(true);
-        }
+        windowObj.OpenWindow();
 
     }
 

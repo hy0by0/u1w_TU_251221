@@ -11,6 +11,7 @@ namespace NovelGame
     {
         [SerializeField] TextMeshProUGUI _mainTextObject;
         [SerializeField] TextMeshProUGUI _nameTextObject;
+        public bool isNovelReading = false; //テキスト表示処理を制御するためのフラグ。先走らせないための
         int _displayedSentenceLength;
         int _sentenceLength;
         float _time;
@@ -23,6 +24,7 @@ namespace NovelGame
             Debug.Log("OK文字送りなどの初期設定が実行されました");
             _time = 0f;
             _feedTime = 0.05f;
+
             //DisplayText();
         }
 
@@ -30,6 +32,8 @@ namespace NovelGame
         // Update is called once per frame
         void Update()
         {
+            if (!isNovelReading) return;
+
             // 文章を１文字ずつ表示する
             _time += Time.deltaTime; //feedTimeごとに文字送りをさせる
             if (_time >= _feedTime)
@@ -54,6 +58,7 @@ namespace NovelGame
                 }
                 else //(まだ表示するテキストが残ってたら)
                 {
+                    //いきなり全文字数にすることで、クイック表示されるようにする
                     _displayedSentenceLength = _sentenceLength;
                 }
 
@@ -71,6 +76,7 @@ namespace NovelGame
         {
             string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence();
             string[] words = sentence.Split(',');
+            //Debug.Log($"[{words[0]}]");
             string textsentence = words[2];
             _sentenceLength = textsentence.Length;
             //表示する文字数がテキストの文字数を上回ったらTrueを出す。
@@ -83,6 +89,7 @@ namespace NovelGame
         /// </summary>
         public void GoToTheNextLine()
         {
+            Debug.Log("GoTONEXT");
             //値の初期化をする
             _displayedSentenceLength = 0;
             _time = 0f;
@@ -95,6 +102,8 @@ namespace NovelGame
             string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence();
             if (NovelManager.Instance.user_script_manager.IsStatement(sentence))
             {
+                //IsStateまでは正常にできているが、こここに来るまでに最初初期化再度されてしまっている
+                Debug.Log("コマンド実行命令が下った！！");
                 // 命令文の実行をUserScriptManagerにて実行
                 NovelManager.Instance.user_script_manager.ExecuteStatement(sentence);
             }
@@ -127,12 +136,19 @@ namespace NovelGame
         /// </summary>
         public void ClearText()
         {
+            isNovelReading = false;
+
+            //値の初期化をする
+            _displayedSentenceLength = 0;
+            _time = 0f;
+            _mainTextObject.maxVisibleCharacters = 0;
             Debug.Log("OKテキストコントローラー初期化");
 
             // 最初の行のテキストを表示、または命令を実行
             string statement = NovelManager.Instance.user_script_manager.GetCurrentSentence();
             if (NovelManager.Instance.user_script_manager.IsStatement(statement)) //その行の文章命令文判定なら
             {
+                Debug.Log("最初は命令だあああああ");
                 // 命令文の実行をUserScriptManagerにて実行
                 NovelManager.Instance.user_script_manager.ExecuteStatement(statement);
             }
