@@ -132,11 +132,11 @@ GameObject:
   m_Component:
   - component: {fileID: 18092370}
   - component: {fileID: 18092374}
-  - component: {fileID: 18092373}
   - component: {fileID: 18092371}
+  - component: {fileID: 18092373}
   - component: {fileID: 18092372}
   m_Layer: 5
-  m_Name: MemoryDataCat
+  m_Name: memory_cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2098,7 +2098,7 @@ GameObject:
   - component: {fileID: 812732294}
   - component: {fileID: 812732295}
   m_Layer: 5
-  m_Name: MemoryDataRibborn
+  m_Name: memory_ribborn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3674,11 +3674,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1435082027}
   - component: {fileID: 1435082031}
-  - component: {fileID: 1435082030}
   - component: {fileID: 1435082028}
+  - component: {fileID: 1435082030}
   - component: {fileID: 1435082029}
   m_Layer: 5
-  m_Name: Camera
+  m_Name: camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3787,7 +3787,7 @@ GameObject:
   - component: {fileID: 1452384005}
   - component: {fileID: 1452384006}
   m_Layer: 5
-  m_Name: MemoryDataPass
+  m_Name: memory_pass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5032,16 +5032,16 @@ MonoBehaviour:
   WatchMemoryC: 0
   WatchMemoryD: 0
   objectPairs:
-  - IconName: Camera
+  - IconName: camera
     IconObject: {fileID: 1435082026}
     WindowObject: {fileID: 1351489030}
-  - IconName: MemoryDataCat
+  - IconName: memory_cat
     IconObject: {fileID: 18092369}
     WindowObject: {fileID: 293243240}
-  - IconName: MemoryDataRibborn
+  - IconName: memory_ribborn
     IconObject: {fileID: 812732292}
     WindowObject: {fileID: 305657382}
-  - IconName: MemoryDataPass
+  - IconName: memory_pass
     IconObject: {fileID: 1452384003}
     WindowObject: {fileID: 158421010}
 --- !u!4 &1982023403

@@ -56,26 +56,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //　アイコンの追加テスト処理
         if (Input.GetKeyDown(KeyCode.W))
         {
-            AddIcon("MemoryDataPass");
+            AddIcon("memory_ribborn");
         }
 
+
+        // 思い出シーン見たかどうかフラグ切り替え処理
         GameObject iconObj_A = null;
         IconController icon_A = null;
 
         if (!WatchMemoryA)
         {
-            foreach (var pair in objectPairs)
-            {
-                //Debug.Log(pair.IconName);
-                if (pair.IconName == "MemoryDataRibborn")
-                {
-                    //Debug.Log("対応オブジェクトリスト発見！！");
-                    iconObj_A = iconParent.transform.Find(pair.IconName).gameObject; //ここで結局見つけられてない
-                    icon_A = iconObj_A.gameObject.GetComponent<IconController>();
-                }
-            }
+            //Debug.Log("対応オブジェクトリスト発見！！");
+            iconObj_A = iconParent.transform.Find("memory_ribborn").gameObject; //ここで結局見つけられてない
+            icon_A = iconObj_A.gameObject.GetComponent<IconController>();
 
             if (icon_A.IsWatched)
             {
@@ -111,26 +107,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"UIアイコンが捨てられた: {icon.name}");
 
-        string iconName = null;
-        GameObject windowObj = null;
+        //string iconName = null;
+        //GameObject windowObj = null;
 
-        foreach (var pair in objectPairs)
-        {
-            Debug.Log(pair.IconName);
-            if (pair.IconName == icon.name)
-            {
-                Debug.Log("対応オブジェクトリスト発見！！");
-                iconName = pair.IconName;
-                windowObj = pair.WindowObject;
-            }
-        }
-
-        Debug.Log(iconName);
+        Debug.Log(icon.name);
 
         //if (iconName == null) return;
 
         //対応する削除演出を行う
-        PlayDeleteEffect(iconName);
+        PlayDeleteEffect(icon.name);
 
         //該当のアイコンを消す
         icon.gameObject.SetActive(false);
@@ -142,7 +127,7 @@ public class GameManager : MonoBehaviour
     {
         if (name == null) return;
         // icon の種類に応じて演出を変える
-        if (name == "Camera")
+        if (name == "camera")
         {
             mainChara.ChangeSprite("invisible");
         }
