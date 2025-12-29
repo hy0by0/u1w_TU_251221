@@ -39,7 +39,7 @@ public class BackGroundMover : MonoBehaviour
     private void OnDestroy()
     {
         // ゲームオブジェクト破壊時にマテリアルのコピーも消しておく
-        Destroy(m_copiedMaterial);
-        m_copiedMaterial = null;
+        //Destroy(m_copiedMaterial);
+        //m_copiedMaterial = null;
     }
 }

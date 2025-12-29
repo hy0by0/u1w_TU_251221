@@ -22,7 +22,7 @@ namespace NovelGame
         // スクリプトの初期化時に実行されるメソッド。ここは毎回呼び出さなくともシーンの最初のみに実行すれば良い。
         void Awake()
         {
-            Debug.Log("OK無事にテキストファイルが読み込まれました");
+            //Debug.Log("OK無事にテキストファイルが読み込まれました");
             // テキストファイルから文章を一行ずつ読み込んでリストに格納する。ここで文書を保持する。
             StringReader reader = new StringReader(_textFile.text);
             while (reader.Peek() != -1)
@@ -52,7 +52,7 @@ namespace NovelGame
         public bool IsStatement(string sentence)
         {
             string[] words = sentence.Split(','); // 文章を単語に分割する
-            Debug.Log($"[{words[0]}]");
+            //Debug.Log($"[{words[0]}]");
 
             if (words[0] == "com") // A列目がcomの場合、命令とみなす
             {
@@ -80,7 +80,7 @@ namespace NovelGame
         /// <param name="sentence">該当する行の文章</param>
         public void ExecuteStatement(string sentence)
         {
-            Debug.Log("命令するぜえええええええ");
+            //Debug.Log("命令するぜえええええええ");
             if (!isRunning) return;
 
             string[] words = sentence.Split(','); // 文章を単語に分割する。何列目に何の情報を記載するか規定しておく。
@@ -90,14 +90,14 @@ namespace NovelGame
             {
                 case "end": // endステートメントの場合
 
-                    Debug.Log("OK終了コマンドが読み込まれました");
+                    //Debug.Log("OK終了コマンドが読み込まれました");
                     StopRun();
                     NovelManager.Instance.End();
                     break;
 
                 case "putImage": // putImageステートメントの場合
 
-                    Debug.Log("画像表示コマンド発動！！！");
+                    //Debug.Log("画像表示コマンド発動！！！");
                     int layerOrder = ConvertToInt(words[4], 10000);
                     int img_x = ConvertToInt(words[5]);
                     int img_y = ConvertToInt(words[6]);
@@ -132,7 +132,7 @@ namespace NovelGame
         /// </summary>
         public void ResetState()
         {
-            Debug.Log("OK:UserScriptManagerの状態の初期化がされました");
+            //Debug.Log("OK:UserScriptManagerの状態の初期化がされました");
             isRunning = true;
             isWaiting = false;
         }

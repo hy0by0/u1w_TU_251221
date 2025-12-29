@@ -21,7 +21,7 @@ namespace NovelGame
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("OK文字送りなどの初期設定が実行されました");
+            //Debug.Log("OK文字送りなどの初期設定が実行されました");
             _time = 0f;
             _feedTime = 0.05f;
 
@@ -89,7 +89,7 @@ namespace NovelGame
         /// </summary>
         public void GoToTheNextLine()
         {
-            Debug.Log("GoTONEXT");
+            //Debug.Log("GoTONEXT");
             //値の初期化をする
             _displayedSentenceLength = 0;
             _time = 0f;
@@ -103,7 +103,7 @@ namespace NovelGame
             if (NovelManager.Instance.user_script_manager.IsStatement(sentence))
             {
                 //IsStateまでは正常にできているが、こここに来るまでに最初初期化再度されてしまっている
-                Debug.Log("コマンド実行命令が下った！！");
+                //Debug.Log("コマンド実行命令が下った！！");
                 // 命令文の実行をUserScriptManagerにて実行
                 NovelManager.Instance.user_script_manager.ExecuteStatement(sentence);
             }
@@ -142,13 +142,13 @@ namespace NovelGame
             _displayedSentenceLength = 0;
             _time = 0f;
             _mainTextObject.maxVisibleCharacters = 0;
-            Debug.Log("OKテキストコントローラー初期化");
+            //Debug.Log("OKテキストコントローラー初期化");
 
             // 最初の行のテキストを表示、または命令を実行
             string statement = NovelManager.Instance.user_script_manager.GetCurrentSentence();
             if (NovelManager.Instance.user_script_manager.IsStatement(statement)) //その行の文章命令文判定なら
             {
-                Debug.Log("最初は命令だあああああ");
+                //Debug.Log("最初は命令だあああああ");
                 // 命令文の実行をUserScriptManagerにて実行
                 NovelManager.Instance.user_script_manager.ExecuteStatement(statement);
             }

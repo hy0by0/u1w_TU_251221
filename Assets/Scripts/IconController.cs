@@ -9,8 +9,12 @@ using DG.Tweening;
 [RequireComponent(typeof(CanvasGroup))]
 public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
+    [Header("アイコンのネームタグを入力")]
+    public string name;
     [Header("アイコンに対応するウィンドウオブジェクトを入力")]
     public WindowObject windowObj;
+    [Header("一度見られたかどうかフラグ。ウィンドウオブジェクトが閉じたらフラグが切り替わるようにする")]
+    public bool IsWatched = false;
 
     private Canvas canvas; // 座標変換用
     private RectTransform rect; // 自分のRectTransform

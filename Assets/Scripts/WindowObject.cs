@@ -14,6 +14,7 @@ public class WindowObject : MonoBehaviour, IDragHandler, IBeginDragHandler
     [Header("制限したい挙動")]
     public bool canDrag = true;
     public bool canClose = true;
+    
 
     // Start is called before the first frame update
     void Start()

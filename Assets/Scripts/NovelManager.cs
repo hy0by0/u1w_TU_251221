@@ -6,6 +6,9 @@ namespace NovelGame
 {
     public class NovelManager : MonoBehaviour
     {
+        [Header("対応アイコンオブジェクトを入れる")]
+        public IconController icon;
+
         // 別クラスからGameManagerの変数を使えるようにする
         public static NovelManager Instance { get; private set; }
 
@@ -23,7 +26,7 @@ namespace NovelGame
         /// </summary>
         private void Awake()
         {
-            Debug.Log("OKノベルパートの初期化・セットアップが実行されました");
+            //Debug.Log("OKノベルパートの初期化・セットアップが実行されました");
             // これで、別クラスからGameManagerの変数などを使えるようにする
             Instance = this;
         }
@@ -35,7 +38,7 @@ namespace NovelGame
         public void StartNovel()
         {
             //ここの関数が呼び出されていないために初期化がうまくできていない
-            Debug.Log("OKノベルパート呼び出し関数！");
+            //Debug.Log("OKノベルパート呼び出し関数！");
             // 進行状態の初期化
             line_number = 0;
 
@@ -55,12 +58,13 @@ namespace NovelGame
 
         public void End()
         {
-            Debug.Log("OK終了処理実行");
+            //Debug.Log("OK終了処理実行");
             image_manager.RemoveImage("all"); // すべての画像を削除する
             main_text_controller.ClearText();
             user_script_manager.StopRun();
             main_text_controller.isNovelReading = false;
-            //非アクティブする前に上の３つがずっと処理し続けてしまっている
+
+            icon.IsWatched = true;
             this.gameObject.SetActive(false);
         }
     }
