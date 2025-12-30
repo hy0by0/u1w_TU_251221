@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     }
 
     [Header("メインキャラ")]
-    [SerializeField] private MainCharaController mainChara;
+    [SerializeField] private ImageController imageCont;
 
     [SerializeField] private Transform iconParent; //アイコンらの親オブジェクト
 
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             if (icon_A.IsWatched)
             {
                 Debug.Log("思い出データ確認フラグを感知");
-                mainChara.ChangeSprite("ribborn");
+                imageCont.ChangeSprite("ribborn");
                 WatchMemoryA = true;
             }
         }
@@ -129,7 +129,8 @@ public class GameManager : MonoBehaviour
         // icon の種類に応じて演出を変える
         if (name == "camera")
         {
-            mainChara.ChangeSprite("invisible");
+            imageCont.ChangeSprite("invisible");
+            imageCont.FadaIn("AddBackGround");
         }
     }
 

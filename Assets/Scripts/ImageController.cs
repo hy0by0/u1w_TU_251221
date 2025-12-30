@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
-public class MainCharaController : MonoBehaviour
+public class ImageController : MonoBehaviour
 {
     public Sprite normal;
     public Sprite invisible;
     public Sprite ribborn;
     public Sprite ribborn_invisible;
 
-    private Image image;
+    public Image Chara;
+    public Image AddBackGround;
+
     // Start is called before the first frame update
     void Start()
     {
-        image = this.gameObject.GetComponent<Image>();
+        //image = this.gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -27,15 +30,25 @@ public class MainCharaController : MonoBehaviour
     {
         if (name == "ribborn_invisible")
         {
-            image.sprite = ribborn_invisible;
+            Chara.sprite = ribborn_invisible;
         }
         else if (name == "invisible")
         {
-            image.sprite = invisible;
+            Chara.sprite = invisible;
         }
         else if (name == "ribborn")
         {
-            image.sprite = ribborn;
+            Chara.sprite = ribborn;
         }
     }
+
+    public void FadaIn(string ImageName)
+    {
+        if (ImageName == "AddBackGround")
+        {
+            AddBackGround.DOFade(0.8f, 0.5f);
+        }
+    }
+
+
 }
