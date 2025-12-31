@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,6 +27,9 @@ public class GameManager : MonoBehaviour
 
     [Header("メインキャラ")]
     [SerializeField] private ImageController imageCont;
+
+    [Header("SoundManager入力")]
+    [SerializeField] private SoundManager soundManager;
 
     [SerializeField] private Transform iconParent; //アイコンらの親オブジェクト
 
@@ -56,10 +61,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //　リトライ用
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Load("SampleScene");
+        }
         //　アイコンの追加テスト処理
         if (Input.GetKeyDown(KeyCode.W))
         {
             AddIcon("memory_ribborn");
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            soundManager.PlaySE("click");
         }
 
 
@@ -123,6 +138,10 @@ public class GameManager : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 削除したアイコンに応じた削除演出
+    /// </summary>
+    /// <param name="name"></param>
     private void PlayDeleteEffect(string name)
     {
         if (name == null) return;
@@ -132,6 +151,24 @@ public class GameManager : MonoBehaviour
             imageCont.ChangeSprite("invisible");
             imageCont.FadaIn("AddBackGround");
         }
+        else if (name == "sound")
+        {
+            soundManager.SetBGMVolume(0.0f);
+        }
+    }
+
+
+    public void Load(string name)
+    {
+        if (name == null)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        else
+        {
+            SceneManager.LoadScene(name);
+        }
+            
     }
 
 
