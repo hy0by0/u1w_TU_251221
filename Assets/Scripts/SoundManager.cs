@@ -42,6 +42,11 @@ public class SoundManager : MonoBehaviour
         bgmAudioSource.volume = volume * 0.7f;
     }
 
+    public void PlaySound()
+    {
+        bgmAudioSource.Play();
+    }
+
     // クリップを受け取ってSEを鳴らす
     public void PlaySE(string seName)
     {
