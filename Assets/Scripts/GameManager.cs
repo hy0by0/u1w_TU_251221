@@ -403,10 +403,10 @@ public class GameManager : MonoBehaviour
         {
             if (monologue[9].isRead)
             {
-                if (WatchMemoryIntro & WatchMemoryCat & WatchMemoryCicada & WatchMemoryRibborn & WatchMemoryFight)
+                if (WatchMemoryIntro & WatchMemoryCat & WatchMemoryCicada & WatchMemoryRibborn)
                 {
                     //Debug.Log("モノローグ3が終了しました！");
-                    monologue[19].ChangeActive(true);
+                    monologue[18].ChangeActive(true);
                     eventState = EventState.SelfTalk_8_1;
                 }
                 else
@@ -421,7 +421,7 @@ public class GameManager : MonoBehaviour
         }
         else if (eventState == EventState.SelfTalk_8_1)
         {
-            if (monologue[19].isRead)
+            if (monologue[18].isRead)
             {
                 Debug.Log("モノローグ3が終了しました！");
                 AddIcon("memory_fight");
@@ -470,7 +470,7 @@ public class GameManager : MonoBehaviour
                 if (WatchMemoryIntro & WatchMemoryCat & WatchMemoryCicada & WatchMemoryRibborn & WatchMemoryFight)
                 {
                     //Debug.Log("モノローグ3が終了しました！");
-                    monologue[18].ChangeActive(true);
+                    monologue[19].ChangeActive(true);
                     eventState = EventState.SelfTalk_9_1;
                 }
                 else
@@ -486,7 +486,7 @@ public class GameManager : MonoBehaviour
         }
         else if (eventState == EventState.SelfTalk_9_1)
         {
-            if (monologue[9].isRead)
+            if (monologue[19].isRead)
             {
                 Debug.Log("モノローグ１が終了しました！");
                 errorWinManager.PutErrrorWindow();
@@ -504,7 +504,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("イベント独白１回目開始！！！");
                 imageCont.ChangeCameraSprite("outdoor");
                 OpenCameraWindow();
-                monologue[16].ChangeActive(true);
+                monologue[17].ChangeActive(true);
                 eventState = EventState.TrueEnd;
             }
             else
@@ -546,7 +546,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("ノーマルエンドへ");
                     imageCont.ChangeCameraSprite("indoor");
                     OpenCameraWindow();
-                    //monologue[9].ChangeActive(true);
+                    monologue[16].ChangeActive(true);
                     eventState = EventState.NormalEnd;//この前にモノローグはさむ？
                 }
 
@@ -579,6 +579,7 @@ public class GameManager : MonoBehaviour
                 {
                     imageCont.ChangeCharaSprite("sad");
                 }
+                monologue[15].ChangeActive(true);
                 eventState = EventState.SadEnd;
             }
             else
@@ -628,6 +629,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("モノローグ3が終了しました！");
                 imageCont.ChangeCameraSprite("indoor");
                 //シーン移動
+                GoEnd("normal");
             }
         }
         else if (eventState == EventState.SadEnd)
@@ -637,6 +639,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("モノローグ3が終了しました！");
                 imageCont.ChangeCameraSprite("indoor");
                 //シーン移動
+                GoEnd("sad");
             }
         }
         else if (eventState == EventState.TrueEnd)
@@ -646,6 +649,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("モノローグ3が終了しました！");
                 imageCont.ChangeCameraSprite("indoor");
                 //シーン移動
+                GoEnd("true");
             }
         }
 
@@ -820,6 +824,7 @@ public class GameManager : MonoBehaviour
     {
         imageCont.FadaIn("WhitePanel");
         yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("TrueEnd");
     }
 
 

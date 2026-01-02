@@ -79,50 +79,54 @@ public class EndController : MonoBehaviour
         if (WatchMemoryIntro)
         {
             resultIntro.DOColor(new Color(255f, 255, 255), 0f);
-            resultIntro.DOFade(0.0f, 0f);
+            resultIntro.DOFade(1f, 0f);
         }
         if (WatchMemoryCat)
         {
             resultCat.DOColor(new Color(255f, 255, 255), 0f);
-            resultCat.DOFade(0.0f, 0f);
+            resultCat.DOFade(1f, 0f);
         }
         if (WatchMemoryCicada)
         {
             resultCicada.DOColor(new Color(255f, 255, 255), 0f);
-            resultCicada.DOFade(0.0f, 0f);
+            resultCicada.DOFade(1f, 0f);
         }
         if (WatchMemoryRibborn)
         {
             resultRibborn.DOColor(new Color(255f, 255, 255), 0f);
-            resultRibborn.DOFade(0.0f, 0f);
+            resultRibborn.DOFade(1f, 0f);
         }
         if (WatchMemoryFight)
         {
             resultFight.DOColor(new Color(255f, 255, 255), 0f);
-            resultFight.DOFade(0.0f, 0f);
+            resultFight.DOFade(1f, 0f);
         }
         if (WatchMemoryPass)
         {
             resultPass.DOColor(new Color(255f, 255, 255), 0f);
-            resultPass.DOFade(0.0f, 0f);
+            resultPass.DOFade(1f, 0f);
         }
-        resultIntro.DOFade(0.0f, 1.5f);
-        UIObj.SetActive(true);
+        resultPanel.DOFade(1f, 0f);
+        //UIObj.SetActive(true);
         isFinish = true;
     }
 
     private void DoTrueEnd()
     {
+        Debug.Log("ラストスチルを出します！！");
         isGoFinal = true;
-        resultIntro.DOFade(0.0f, 1.5f);
+        resultPanel.DOFade(1f, 1.5f);
     }
+
+
     IEnumerator Final()
     {
+        Debug.Log("最期の画面！！");
         isFinish = true;
-        WhitePanel.DOFade(0.0f, 2f).SetLoops(1, LoopType.Yoyo);
-        yield return new WaitForSeconds(1.0f);
-        UIObj.SetActive(true);
+        WhitePanel.DOFade(1f, 2f).SetLoops(2, LoopType.Yoyo);
+        yield return new WaitForSeconds(1.5f);
         postEffectObj.SetActive(true);
+        UIObj.SetActive(true);
         
     }
 }
