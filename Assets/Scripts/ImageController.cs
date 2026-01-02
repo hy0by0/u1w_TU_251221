@@ -6,11 +6,17 @@ using DG.Tweening;
 
 public class ImageController : MonoBehaviour
 {
+    [Header("白幕")]
+    public Image WhitePanel;
+
     [Header("主人公のスプライト差分集")]
     public Sprite normal;
     public Sprite invisible;
     public Sprite ribborn;
     public Sprite ribborn_invisible;
+    public Sprite sad;
+    public Sprite sad_ribborn;
+    public Sprite sad_ribborn_invisible;
 
     [Header("カメラの風景スプライト集")]
     public Sprite indoor;
@@ -49,6 +55,18 @@ public class ImageController : MonoBehaviour
         {
             Chara.sprite = ribborn;
         }
+        else if (name == "sad")
+        {
+            Chara.sprite = sad;
+        }
+        else if (name == "sad_ribborn")
+        {
+            Chara.sprite = sad_ribborn;
+        }
+        else if (name == "sad_ribborn_invisible")
+        {
+            Chara.sprite = sad_ribborn_invisible;
+        }
     }
 
     public void ChangeCameraSprite(string name)
@@ -80,6 +98,11 @@ public class ImageController : MonoBehaviour
         if (ImageName == "AddBackGround")
         {
             AddBackGround.DOFade(0.8f, 0.5f);
+            
+        }
+        else if (ImageName == "WhitePanel")
+        {
+            WhitePanel.DOFade(1f, 1f);
         }
     }
 
