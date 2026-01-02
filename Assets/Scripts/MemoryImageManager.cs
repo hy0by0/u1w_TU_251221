@@ -10,6 +10,7 @@ namespace NovelGame
     {
         [Header("対応する画像変数")]
         [SerializeField] Sprite _background1;
+        [SerializeField] Sprite _background2;
         [SerializeField] Sprite _charaA_face;
         [SerializeField] Sprite _charaB_face;
         [SerializeField] GameObject _backgroundObject;
@@ -33,6 +34,7 @@ namespace NovelGame
             //テキスト→スプライトの初期化と画像の追加
             _textToSprite = new Dictionary<string, Sprite>();
             _textToSprite.Add("background1", _background1);
+            _textToSprite.Add("background2", _background2);
             _textToSprite.Add("A_face", _charaA_face);
             _textToSprite.Add("B_face", _charaB_face);
 

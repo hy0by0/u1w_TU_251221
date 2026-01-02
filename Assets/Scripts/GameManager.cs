@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
                 OffImage.DOFade(0f, 1.5f); //画面蓋をとる。
                 AddIcon("memory_intro"); // 最初のメモリーを開始
                 soundManager.PlaySound(); //サウンド開始
+                imageCont.ChangeCameraSprite("indoor");
                 eventState = EventState.Memory_Intro; //イベント状態を切り替え
             }
         }
@@ -137,6 +138,8 @@ public class GameManager : MonoBehaviour
             if (WatchMemoryIntro)
             {
                 Debug.Log("イベント独白１回目開始！！！");
+                imageCont.ChangeCameraSprite("outdoor");
+                OpenCameraWindow();
                 monologue[0].ChangeActive(true);
                 eventState = EventState.SelfTalk_1;
             }
@@ -186,12 +189,15 @@ public class GameManager : MonoBehaviour
                 if (canHear)
                 {
                     Debug.Log("思い出ネコモノローグへ。音鳴らす？");
+                    imageCont.ChangeCameraSprite("cat");
+                    OpenCameraWindow();
                     monologue[2].ChangeActive(true);
                     eventState = EventState.SelfTalk_2;
                 }
                 else
                 {
                     Debug.Log("モノローグセミ思い出前へ");
+                    imageCont.ChangeCameraSprite("indoor");
                     monologue[4].ChangeActive(true);
                     eventState = EventState.SelfTalk_4;
                 }
@@ -219,6 +225,8 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("メモリー猫終了！！");
                 Debug.Log("モノローグ４へ");
+                imageCont.ChangeCameraSprite("outdoor");
+                OpenCameraWindow();
                 monologue[3].ChangeActive(true);
                 eventState = EventState.SelfTalk_3;
             }
@@ -242,6 +250,8 @@ public class GameManager : MonoBehaviour
             if (monologue[3].isRead)
             {
                 Debug.Log("モノローグ3が終了しました！");
+                imageCont.ChangeCameraSprite("indoor");
+                OpenCameraWindow();
                 monologue[4].ChangeActive(true);
                 eventState = EventState.SelfTalk_4;
             }
@@ -266,6 +276,8 @@ public class GameManager : MonoBehaviour
             if (WatchMemoryCicada)
             {
                 Debug.Log("イベント独白１回目開始！！！");
+                imageCont.ChangeCameraSprite("outdoor");
+                OpenCameraWindow();
                 monologue[5].ChangeActive(true);
                 eventState = EventState.SelfTalk_5;
             }
@@ -314,12 +326,16 @@ public class GameManager : MonoBehaviour
                 if (canWatch)
                 {
                     Debug.Log("思い出リボンへ。音鳴らす？");
+                    imageCont.ChangeCameraSprite("ribborn");
+                    OpenCameraWindow();
                     monologue[7].ChangeActive(true);
                     eventState = EventState.SelfTalk_6;
                 }
                 else
                 {
                     Debug.Log("モノローグセミ思い出前へ");
+                    imageCont.ChangeCameraSprite("indoor");
+                    OpenCameraWindow();
                     monologue[9].ChangeActive(true);
                     eventState = EventState.SelfTalk_8;
                 }
@@ -344,6 +360,8 @@ public class GameManager : MonoBehaviour
             if (WatchMemoryRibborn)
             {
                 Debug.Log("イベント独白１回目開始！！！");
+                imageCont.ChangeCameraSprite("outdoor");
+                OpenCameraWindow();
                 monologue[8].ChangeActive(true);
                 eventState = EventState.SelfTalk_7;
             }
@@ -356,7 +374,7 @@ public class GameManager : MonoBehaviour
                 if (icon.IsWatched)
                 {
                     Debug.Log("思い出データ確認フラグを感知"); //ここで処理ストップしてしまっている！！
-                    imageCont.ChangeSprite("ribborn");
+                    imageCont.ChangeCharaSprite("ribborn");
                     WatchMemoryRibborn = true;
                 }
             }
@@ -367,6 +385,8 @@ public class GameManager : MonoBehaviour
             if (monologue[8].isRead)
             {
                 Debug.Log("モノローグ3が終了しました！");
+                imageCont.ChangeCameraSprite("indoor");
+                OpenCameraWindow();
                 monologue[9].ChangeActive(true);
                 eventState = EventState.SelfTalk_8;
             }
@@ -393,13 +413,15 @@ public class GameManager : MonoBehaviour
             if (WatchMemoryFight)
             {
                 Debug.Log("イベント独白１回目開始！！！");
+                imageCont.ChangeCameraSprite("indoor");
+                OpenCameraWindow();
                 monologue[10].ChangeActive(true);
                 eventState = EventState.SelfTalk_9;
             }
             else
             {
                 //Debug.Log("対応オブジェクトリスト発見！！");
-                iconObj = iconParent.transform.Find("memory_fight").gameObject; //ここで結局見つけられてない
+                iconObj = iconParent.transform.Find("memory_fight").gameObject;
                 icon = iconObj.gameObject.GetComponent<IconController>();
 
                 if (icon.IsWatched)
@@ -441,13 +463,16 @@ public class GameManager : MonoBehaviour
                 if (canWatch)
                 {
                     Debug.Log("思い出リボンへ。音鳴らす？");
-                    //鈴の音入れるならここかも
+                    imageCont.ChangeCameraSprite("diary");
+                    OpenCameraWindow();
                     monologue[12].ChangeActive(true);
                     eventState = EventState.SelfTalk_10;
                 }
                 else
                 {
                     Debug.Log("ノーマルエンドへ");
+                    imageCont.ChangeCameraSprite("indoor");
+                    OpenCameraWindow();
                     //monologue[9].ChangeActive(true);
                     eventState = EventState.NormalEnd;//この前にモノローグはさむ？
                 }
@@ -484,7 +509,7 @@ public class GameManager : MonoBehaviour
                 if (icon.IsWatched)
                 {
                     Debug.Log("思い出データ確認フラグを感知");
-                    imageCont.ChangeSprite("ribborn");
+                    imageCont.ChangeCharaSprite("ribborn");
                     WatchMemoryPass = true;
                 }
             }
@@ -571,7 +596,14 @@ public class GameManager : MonoBehaviour
         // icon の種類に応じて演出を変える
         if (name == "camera")
         {
-            imageCont.ChangeSprite("invisible");
+            if (WatchMemoryRibborn)
+            {
+                imageCont.ChangeCharaSprite("ribborn_invisible");
+            }
+            else
+            {
+                imageCont.ChangeCharaSprite("invisible");
+            }
             imageCont.FadaIn("AddBackGround");
             canWatch = false;
         }
@@ -599,6 +631,17 @@ public class GameManager : MonoBehaviour
         else if (name == "memory_fight")
         {
             WatchMemoryFight = false;
+        }
+    }
+
+
+    public void OpenCameraWindow()
+    {
+        if (canWatch)
+        {
+            GameObject iconObj = iconParent.transform.Find("camera").gameObject;
+            IconController icon = iconObj.gameObject.GetComponent<IconController>();
+            icon.OpenWindow();
         }
     }
 

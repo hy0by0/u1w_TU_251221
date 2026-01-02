@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 24b94cfd2dec60441bf501f9f3091a22, type: 3}
+  _textFile: {fileID: 4900000, guid: b819a6456c958244eb466b70377dc30e, type: 3}
   isWaiting: 0
 --- !u!4 &40523580
 Transform:
@@ -4799,7 +4799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 24b94cfd2dec60441bf501f9f3091a22, type: 3}
+  _textFile: {fileID: 4900000, guid: d5408299f4a059144b1c9e3907728e81, type: 3}
   isWaiting: 0
 --- !u!4 &452569712
 Transform:
@@ -5282,7 +5282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 24b94cfd2dec60441bf501f9f3091a22, type: 3}
+  _textFile: {fileID: 4900000, guid: 238bae5bb3883d44a8390bdeca4e0efc, type: 3}
   isWaiting: 0
 --- !u!4 &485001804
 Transform:
@@ -9178,7 +9178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 24b94cfd2dec60441bf501f9f3091a22, type: 3}
+  _textFile: {fileID: 4900000, guid: 68d68e9378195224cabc047fac061618, type: 3}
   isWaiting: 0
 --- !u!4 &1115506907
 Transform:
@@ -10045,7 +10045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 24b94cfd2dec60441bf501f9f3091a22, type: 3}
+  _textFile: {fileID: 4900000, guid: fe5b7bdc15e35f9439d5c3c7e17ac06d, type: 3}
   isWaiting: 0
 --- !u!4 &1212964124
 Transform:
@@ -10592,7 +10592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1286121174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16928,7 +16928,13 @@ MonoBehaviour:
   invisible: {fileID: 21300000, guid: 61a95cab8e46e7f49a43c34979be8174, type: 3}
   ribborn: {fileID: 21300000, guid: 4b80957ec5796be4dbbebac4c1eb6d9d, type: 3}
   ribborn_invisible: {fileID: 21300000, guid: 623db3e09942d70419394a0b80308678, type: 3}
+  indoor: {fileID: 21300000, guid: c0169e5d71d9107448ca083a33b28dec, type: 3}
+  outdoor: {fileID: 21300000, guid: 4765a6ad4aa462a4485e16bcd6f01e66, type: 3}
+  cat: {fileID: 21300000, guid: 43bc2159710d22e49b5faedd59981dbb, type: 3}
+  ribborn_camera: {fileID: 21300000, guid: 1c72895010e35934583f4fd7b06e53c1, type: 3}
+  diary: {fileID: 21300000, guid: eb8075abe0e5d974285727698689b31a, type: 3}
   Chara: {fileID: 316089074}
+  CameraImage: {fileID: 258116326}
   AddBackGround: {fileID: 1618183241}
 --- !u!4 &2026591618
 Transform:

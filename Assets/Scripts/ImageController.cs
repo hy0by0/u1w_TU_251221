@@ -6,12 +6,21 @@ using DG.Tweening;
 
 public class ImageController : MonoBehaviour
 {
+    [Header("主人公のスプライト差分集")]
     public Sprite normal;
     public Sprite invisible;
     public Sprite ribborn;
     public Sprite ribborn_invisible;
 
+    [Header("カメラの風景スプライト集")]
+    public Sprite indoor;
+    public Sprite outdoor;
+    public Sprite cat;
+    public Sprite ribborn_camera;
+    public Sprite diary;
+
     public Image Chara;
+    public Image CameraImage;
     public Image AddBackGround;
 
     // Start is called before the first frame update
@@ -26,7 +35,7 @@ public class ImageController : MonoBehaviour
         
     }
 
-    public void ChangeSprite(string name)
+    public void ChangeCharaSprite(string name)
     {
         if (name == "ribborn_invisible")
         {
@@ -39,6 +48,30 @@ public class ImageController : MonoBehaviour
         else if (name == "ribborn")
         {
             Chara.sprite = ribborn;
+        }
+    }
+
+    public void ChangeCameraSprite(string name)
+    {
+        if (name == "indoor")
+        {
+            CameraImage.sprite = indoor;
+        }
+        else if (name == "outdoor")
+        {
+            CameraImage.sprite = outdoor;
+        }
+        else if (name == "cat")
+        {
+            CameraImage.sprite = cat;
+        }
+        else if (name == "ribborn")
+        {
+            CameraImage.sprite = ribborn_camera;
+        }
+        else if (name == "diary")
+        {
+            CameraImage.sprite = diary;
         }
     }
 
