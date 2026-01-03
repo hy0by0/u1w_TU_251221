@@ -9,12 +9,15 @@ using DG.Tweening;
 [RequireComponent(typeof(CanvasGroup))]
 public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
+    public bool isFinalMemory =  false;
     [Header("アイコンのネームタグを入力")]
     public string name;
     [Header("アイコンに対応するウィンドウオブジェクトを入力")]
     public WindowObject windowObj;
     [Header("一度見られたかどうかフラグ。ウィンドウオブジェクトが閉じたらフラグが切り替わるようにする")]
     public bool IsWatched = false;
+
+    public GameObject passManager;
 
     private Canvas canvas; // 座標変換用
     private RectTransform rect; // 自分のRectTransform
@@ -93,7 +96,15 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (clickCount >= 2)
         {
             Debug.Log("ダブルクリックされたぞ！");
-            OpenWindow();
+            if (isFinalMemory)
+            {
+                OpenPass();
+            }
+            else
+            {
+                OpenWindow();
+            }
+            
         }
 
         
@@ -106,6 +117,11 @@ public class IconController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OpenWindow()
     {
         windowObj.OpenWindow();
+    }
+
+    public void OpenPass()
+    {
+        passManager.SetActive(true);
     }
 
 

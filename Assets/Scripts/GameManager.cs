@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
         WaitDeleteAction_3, //削除タイム３ラスト
         FlagCheck_3, //遺品フラグ目＋パス？。
         SelfTalk_10,
+        CheckPassDiary, //日記パス
+        SelfTalk_10_1, //日記開いた場合モノローグ
         Memory_Diaray, //メモリー６つ目-日記。
         Memory_Pass, //メモリー７つ目、最期
         SelfTalk_11, //必要かは不明。SadEndにまとめられるかも？
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
     [Header("必要なオブジェクト入れる")]
     public Image OffImage;
     public GameObject pcSound;
+    public PassManager passManager;
     public MonologueController[] monologue; //モノローグ用
     public ErrorWindowManager errorWinManager; //エラーウィンドウの表示非表示用
     public GameObject postProcess;
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour
         WatchMemoryRibborn = false;
         WatchMemoryFight = false;
         WatchMemoryPass = false;
+        passManager.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -194,6 +198,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("思い出ネコモノローグへ。音鳴らす？");
                     imageCont.ChangeCameraSprite("cat");
                     OpenCameraWindow();
+                    soundManager.PlaySE("bell");
                     monologue[2].ChangeActive(true);
                     eventState = EventState.SelfTalk_2;
                 }
@@ -527,6 +532,32 @@ public class GameManager : MonoBehaviour
         else if (eventState == EventState.SelfTalk_10)
         {
             if (monologue[12].isRead)
+            {
+                passManager.gameObject.SetActive(true);
+                eventState = EventState.CheckPassDiary;
+            }
+
+        }
+        else if (eventState == EventState.CheckPassDiary)
+        {
+            if (passManager.isOpen)
+            {
+                monologue[13].ChangeActive(true);
+                eventState = EventState.SelfTalk_10_1;
+            }
+            else if(passManager.isFaild)
+            {
+                Debug.Log("ノーマルエンドへ");
+                imageCont.ChangeCameraSprite("indoor");
+                OpenCameraWindow();
+                monologue[16].ChangeActive(true);
+                eventState = EventState.NormalEnd;//この前にモノローグはさむ？
+            }
+
+        }
+        else if (eventState == EventState.SelfTalk_10_1)
+        {
+            if (monologue[13].isRead)
             {
                 AddIcon("memory_diary");
                 eventState = EventState.Memory_Diaray;
