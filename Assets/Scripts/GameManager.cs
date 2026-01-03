@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
     [Header("フラグチェッカー")]
     public bool canWatch = true; //見えるかどうか
     public bool canHear = true; //聞こえるかどうか
+    public static bool isFindDiary = false;
+    public static bool isAppearFinalMemory = false;
     public static bool WatchMemoryIntro = false; //思い出Aの既読があるかどうか
     public static bool WatchMemoryCat = false;
     public static bool WatchMemoryCicada = false;
@@ -99,6 +101,8 @@ public class GameManager : MonoBehaviour
     {
         isEnd = false;
         isTrashed = false;
+        isFindDiary = false;
+        isAppearFinalMemory = false;
         canWatch = true; //見えるかどうか
         canHear = true; //聞こえるかどうか
         WatchMemoryIntro = false;
@@ -392,8 +396,10 @@ public class GameManager : MonoBehaviour
         {
             if (monologue[9].isRead)
             {
+                //これまでのメモリーを残していたら、最後のメモリーを開放、それに伴うセリフの追加を行う
                 if (WatchMemoryIntro & WatchMemoryCat & WatchMemoryCicada & WatchMemoryRibborn)
                 {
+                    isAppearFinalMemory = true; //最後のメモリーが出現させられたフラグを立てておく（後のヒント用に）
                     monologue[18].ChangeActive(true);
                     eventState = EventState.SelfTalk_8_1;
                 }
@@ -533,6 +539,7 @@ public class GameManager : MonoBehaviour
         {
             if (monologue[12].isRead)
             {
+                isFindDiary = true; //日記発見フラグを立てる
                 passManager.gameObject.SetActive(true);
                 eventState = EventState.CheckPassDiary;
             }

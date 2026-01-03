@@ -73249,7 +73249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: ef72d83c998cb8744b4100d702f89b18, type: 3}
+  _textFile: {fileID: 4900000, guid: 640d929c5db066345a07101523bf42c6, type: 3}
   novelManager: {fileID: 1275085473}
   isWaiting: 0
 --- !u!4 &1496056901

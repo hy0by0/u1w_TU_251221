@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static GameManager;
@@ -14,6 +15,12 @@ public class EndController : MonoBehaviour
     public ChangeScene changeScene;
     public GameObject UIObj;
     public GameObject postEffectObj;
+
+    public TextMeshProUGUI errorNumber;
+
+    public Image hintQR_1;
+    public Image hintQR_2;
+    public Image hintQR_3;
 
     public Image resultPanel;
     public Image resultIntro;
@@ -106,7 +113,25 @@ public class EndController : MonoBehaviour
             resultPass.DOColor(new Color(255f, 255, 255), 0f);
             resultPass.DOFade(1f, 0f);
         }
-        resultPanel.DOFade(1f, 0f);
+
+        if (WatchMemoryDiary && isAppearFinalMemory)
+        {
+            hintQR_3.DOFade(1f, 0f);
+            errorNumber.text = "85";
+        }
+        else if (!WatchMemoryDiary && isFindDiary)
+        {
+            hintQR_2.DOFade(1f, 0f);
+            errorNumber.text = "50";
+        }
+        else
+        {
+            hintQR_1.DOFade(1f, 0f);
+            errorNumber.text = "13";
+        }
+
+            resultPanel.DOFade(1f, 0f);
+
         //UIObj.SetActive(true);
         isFinish = true;
     }
