@@ -1,6 +1,6 @@
-com,putImage,background1,backgroundObject,,0,0,500
-,,メンテナンスに行かなければいけません。,,,,,
-com,putImage,A_face,eventObject,2,0,-50,100
+com,putImage,background1,backgroundObject,,0,-204,220
+,,ですから、メンテナンスに行かなければいけません。,,,,,
+com,putImage,A_face,eventObject,2,100,-60,110
 ,,なんで？,,,,,
 ,,規定なので。,,,,,
 ,,もう少し後でもいいじゃん！,,,,,

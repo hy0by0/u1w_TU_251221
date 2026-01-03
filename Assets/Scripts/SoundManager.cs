@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource seAudioSource;
     public AudioClip ClickSE;
     public AudioClip ErrorSE;
+    public AudioClip BellSE;
+    public AudioClip TrashSE;
 
     void Awake()
     {
@@ -65,6 +67,14 @@ public class SoundManager : MonoBehaviour
         else if (name == "error")
         {
             clip = ErrorSE;
+        }
+        else if (name == "bell")
+        {
+            clip = BellSE;
+        }
+        else if (name == "trash")
+        {
+            clip = TrashSE;
         }
         return clip;
     }

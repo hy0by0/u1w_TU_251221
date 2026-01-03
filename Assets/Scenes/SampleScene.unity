@@ -2068,7 +2068,7 @@ GameObject:
   - component: {fileID: 40523580}
   - component: {fileID: 40523579}
   m_Layer: 0
-  m_Name: UserScriptManager
+  m_Name: FightUSM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2086,7 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: b819a6456c958244eb466b70377dc30e, type: 3}
+  _textFile: {fileID: 4900000, guid: 2bf7f177ba74f324ab51ca7427e6e815, type: 3}
   isWaiting: 0
 --- !u!4 &40523580
 Transform:
@@ -5878,7 +5878,7 @@ GameObject:
   - component: {fileID: 133150951}
   - component: {fileID: 133150950}
   m_Layer: 5
-  m_Name: MainText
+  m_Name: FightMainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7990,7 +7990,7 @@ GameObject:
   - component: {fileID: 176726503}
   - component: {fileID: 176726505}
   m_Layer: 5
-  m_Name: MainText
+  m_Name: CatMainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10548,6 +10548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a03e0ed71e752941b22c93d1e093868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManager: {fileID: 2034346189}
 --- !u!225 &219826909
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11139,7 +11140,7 @@ GameObject:
   - component: {fileID: 230854885}
   - component: {fileID: 230854884}
   m_Layer: 0
-  m_Name: MemoryImageManager
+  m_Name: IntroImageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13576,7 +13577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u6841"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -13585,8 +13586,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4284769380
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -18054,7 +18055,7 @@ GameObject:
   - component: {fileID: 361213345}
   - component: {fileID: 361213344}
   m_Layer: 5
-  m_Name: MainText
+  m_Name: IntroMainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20505,7 +20506,7 @@ GameObject:
   - component: {fileID: 400573303}
   - component: {fileID: 400573302}
   m_Layer: 0
-  m_Name: MemoryImageManager
+  m_Name: CicadaImageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20525,7 +20526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background1: {fileID: 21300000, guid: 4765a6ad4aa462a4485e16bcd6f01e66, type: 3}
   _background2: {fileID: 0}
-  _charaA_face: {fileID: 21300000, guid: 97ddd5c97e7fecd4eb04bd5a64c38691, type: 3}
+  _charaA_face: {fileID: 21300000, guid: a100651b9e34e00469096799bcdf6d0f, type: 3}
   _charaB_face: {fileID: 21300000, guid: 97ddd5c97e7fecd4eb04bd5a64c38691, type: 3}
   _backgroundObject: {fileID: 318963739}
   _eventObject: {fileID: 1001380549}
@@ -22476,7 +22477,7 @@ GameObject:
   - component: {fileID: 452569712}
   - component: {fileID: 452569711}
   m_Layer: 0
-  m_Name: UserScriptManager
+  m_Name: CatUSM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22494,7 +22495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: d5408299f4a059144b1c9e3907728e81, type: 3}
+  _textFile: {fileID: 4900000, guid: d1bdd50068c486447987fe819fc85306, type: 3}
   isWaiting: 0
 --- !u!4 &452569712
 Transform:
@@ -24562,7 +24563,7 @@ GameObject:
   - component: {fileID: 485001804}
   - component: {fileID: 485001803}
   m_Layer: 0
-  m_Name: UserScriptManager
+  m_Name: CicadaUSM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24580,7 +24581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 238bae5bb3883d44a8390bdeca4e0efc, type: 3}
+  _textFile: {fileID: 4900000, guid: 49919f8a670d87540af9f879bced86cb, type: 3}
   isWaiting: 0
 --- !u!4 &485001804
 Transform:
@@ -25732,7 +25733,7 @@ GameObject:
   - component: {fileID: 512842969}
   - component: {fileID: 512842968}
   m_Layer: 0
-  m_Name: MemoryImageManager
+  m_Name: FightImageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29222,7 +29223,7 @@ GameObject:
   - component: {fileID: 586344220}
   - component: {fileID: 586344219}
   m_Layer: 0
-  m_Name: MemoryImageManager
+  m_Name: CatImageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32711,7 +32712,7 @@ GameObject:
   - component: {fileID: 651561236}
   - component: {fileID: 651561235}
   m_Layer: 5
-  m_Name: MainText
+  m_Name: DiaryMainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34772,7 +34773,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u6570"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -34781,8 +34782,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4284769380
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -35306,7 +35307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -35315,8 +35316,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4284703587
+  m_fontColor: {r: 0.3886792, g: 0.3886792, b: 0.3886792, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -41054,7 +41055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u3053"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -41064,7 +41065,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -42595,7 +42596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u3068"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -42605,7 +42606,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -48837,7 +48838,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -54691,7 +54692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 68d68e9378195224cabc047fac061618, type: 3}
+  _textFile: {fileID: 4900000, guid: 284a16ae801728d4f8ed6bd4a8ec7299, type: 3}
   isWaiting: 0
 --- !u!4 &1115506907
 Transform:
@@ -59128,7 +59129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: fe5b7bdc15e35f9439d5c3c7e17ac06d, type: 3}
+  _textFile: {fileID: 4900000, guid: 8704072d0ddfacf4d81569c8f01603a0, type: 3}
   isWaiting: 0
 --- !u!4 &1212964124
 Transform:
@@ -70534,7 +70535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u306E"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -70543,8 +70544,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4284769380
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -73223,7 +73224,7 @@ GameObject:
   - component: {fileID: 1496056901}
   - component: {fileID: 1496056900}
   m_Layer: 0
-  m_Name: UserScriptManager
+  m_Name: DiaryUSM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73241,7 +73242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 2b73948c52b8b6b4c81c951d3cadb337, type: 3}
+  _textFile: {fileID: 4900000, guid: ef72d83c998cb8744b4100d702f89b18, type: 3}
   isWaiting: 0
 --- !u!4 &1496056901
 Transform:
@@ -76300,7 +76301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u3044"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -76310,7 +76311,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -77738,7 +77739,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1145597591}
         m_TargetAssemblyTypeName: PassManager, Assembly-CSharp
-        m_MethodName: JudgePass
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -81778,7 +81779,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u3070"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -81788,7 +81789,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -97681,7 +97682,7 @@ GameObject:
   - component: {fileID: 1993066997}
   - component: {fileID: 1993066996}
   m_Layer: 5
-  m_Name: MainText
+  m_Name: CicadaMainText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99408,7 +99409,7 @@ GameObject:
   - component: {fileID: 2017483529}
   - component: {fileID: 2017483528}
   m_Layer: 0
-  m_Name: UserScriptManager
+  m_Name: IntroUSM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99426,7 +99427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 486f85074343a604695529ac090a793c, type: 3}
+  _textFile: {fileID: 4900000, guid: dc9f810f40b008849861640b5f682c3a, type: 3}
   isWaiting: 0
 --- !u!4 &2017483529
 Transform:
@@ -100837,6 +100838,8 @@ MonoBehaviour:
   seAudioSource: {fileID: 275915441}
   ClickSE: {fileID: 8300000, guid: fde05fa074dc62145b97b41a644d3d3f, type: 3}
   ErrorSE: {fileID: 8300000, guid: 2a6aeeaaffa93d74dac0237a97d11882, type: 3}
+  BellSE: {fileID: 8300000, guid: 2b8ef47775c3f624cbbd93ac65bdf26f, type: 3}
+  TrashSE: {fileID: 8300000, guid: 93d4a107cbada50409c8cfe13d1442d8, type: 3}
 --- !u!4 &2034346190
 Transform:
   m_ObjectHideFlags: 0
@@ -105748,14 +105751,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5520734, g: 0.5113207, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc0b5a8580357f84da3b9f568304cc90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 339eb8b91258e2242b9c66cf3a3b1467, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -106453,7 +106456,7 @@ GameObject:
   - component: {fileID: 2144915743}
   - component: {fileID: 2144915742}
   m_Layer: 0
-  m_Name: MemoryImageManager
+  m_Name: FightImageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106636,8 +106639,8 @@ SceneRoots:
   - {fileID: 1982023403}
   - {fileID: 1911218694}
   - {fileID: 2026591618}
-  - {fileID: 275915442}
-  - {fileID: 1797282696}
   - {fileID: 1852741325}
   - {fileID: 1872016110}
+  - {fileID: 1797282696}
+  - {fileID: 275915442}
   - {fileID: 2034346190}

@@ -1,5 +1,5 @@
-com,putImage,background1,backgroundObject,,0,0,500
-com,putImage,A_face,eventObject,2,0,-50,100
+com,putImage,background1,backgroundObject,,0,230,220
+com,putImage,A_face,eventObject,2,100,-50,100
 ,,いつも同じ格好なの？,,,,,
 ,,私におしゃれは不要ですから。,,,,,
 ,,えーした方がいいよー,,,,,
@@ -9,5 +9,5 @@ com,putImage,A_face,eventObject,2,0,-50,100
 ,,いいから。・・・っしょっと。ごほん、これでよし。,,,,,
 ,,頑張った一人なんだし。,,,,,
 com,removeImage,A_face,,,,,
-,,ほら！私とおそろい！,,,,,
+,,ほら！アタシとおそろい！,,,,,
 com,end,,,,,,

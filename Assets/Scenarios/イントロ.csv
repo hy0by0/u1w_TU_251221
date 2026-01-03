@@ -1,0 +1,12 @@
+com,putImage,background1,backgroundObject,,0,0,220
+,,■■■　ゃ　・・・,,,,,
+com,putImage,A_face,eventObject,2,100,-50,100
+,,■■■ちゃん！,,,,,
+,,合言葉にしようよ。,,,,,
+,,・・・合言葉？,,,,,
+,,そう、あたしたちだけの秘密の言葉。,,,,,
+,,その言葉が、会う合図。,,,,,
+,,だから、,,,,,
+com,removeImage,A_face,,,,,
+,,よろしくね■■■,,,,,
+com,end,,,,,,
