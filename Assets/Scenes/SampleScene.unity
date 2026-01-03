@@ -2506,7 +2506,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1057694102}
         m_TargetAssemblyTypeName: InputPass, Assembly-CSharp
-        m_MethodName: CorrectPass
+        m_MethodName: NotPass
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5684,7 +5684,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1325577561}
         m_TargetAssemblyTypeName: InputPass, Assembly-CSharp
-        m_MethodName: NotPass
+        m_MethodName: CorrectPass
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6721,7 +6721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -71, y: 5.2}
+  m_AnchoredPosition: {x: -5, y: 5.2}
   m_SizeDelta: {x: 60.67, y: 60.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &145233433
@@ -32518,7 +32518,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1325577561}
         m_TargetAssemblyTypeName: InputPass, Assembly-CSharp
-        m_MethodName: CorrectPass
+        m_MethodName: NotPass
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -38377,7 +38377,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 145233436}
         m_TargetAssemblyTypeName: InputPass, Assembly-CSharp
-        m_MethodName: CorrectPass
+        m_MethodName: NotPass
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41055,7 +41055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3053"
+  m_text: "\u8449"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -41064,7 +41064,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4284769380
   m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -42605,7 +42605,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4284769380
   m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -48828,7 +48828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3042"
+  m_text: "\u5408"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -48837,7 +48837,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4284769380
   m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -51232,7 +51232,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 145233436}
         m_TargetAssemblyTypeName: InputPass, Assembly-CSharp
-        m_MethodName: NotPass
+        m_MethodName: CorrectPass
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -52276,7 +52276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11, y: 5.2}
+  m_AnchoredPosition: {x: 86, y: 5.2}
   m_SizeDelta: {x: 60.67, y: 60.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057694099
@@ -56575,8 +56575,6 @@ MonoBehaviour:
   - {fileID: 1325577561}
   - {fileID: 145233436}
   - {fileID: 1057694102}
-  - {fileID: 1501662856}
-  - {fileID: 1416256344}
 --- !u!114 &1145597592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57225,9 +57223,9 @@ RectTransform:
   - {fileID: 1286121174}
   - {fileID: 1638184537}
   - {fileID: 1389548270}
-  - {fileID: 846646610}
   - {fileID: 1145597589}
   - {fileID: 1050317433}
+  - {fileID: 846646610}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -64266,7 +64264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130.1, y: 5.2}
+  m_AnchoredPosition: {x: -98, y: 5.2}
   m_SizeDelta: {x: 60.67, y: 60.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325577558
@@ -70016,7 +70014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1416256344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70049,7 +70047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 108, y: 5.2}
+  m_AnchoredPosition: {x: 660, y: 5.2}
   m_SizeDelta: {x: 60.67, y: 60.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416256346
@@ -73713,7 +73711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1501662852
 RectTransform:
   m_ObjectHideFlags: 0
@@ -73731,7 +73729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47, y: 5.2}
+  m_AnchoredPosition: {x: 599, y: 5.2}
   m_SizeDelta: {x: 60.67, y: 60.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1501662853
@@ -76301,7 +76299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3044"
+  m_text: "\u8A00"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
   m_sharedMaterial: {fileID: -6871172012035106297, guid: 6182e7aeb9b89a843b0ff1f618d04d22, type: 2}
@@ -76310,7 +76308,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4284769380
   m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -81788,7 +81786,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
+    rgba: 4284769380
   m_fontColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -86308,7 +86306,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1057694102}
         m_TargetAssemblyTypeName: InputPass, Assembly-CSharp
-        m_MethodName: NotPass
+        m_MethodName: CorrectPass
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
