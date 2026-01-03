@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a64fee54169eec7468d1d3627d4e1d89, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 741a6f143c4f80d42a6cdb594c01f440, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dfa2c5703d313e42b7746058f073faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://x.com/Kurumi_ohayo
+  url: https://x.com/hiragi_kakikaki
 --- !u!114 &551330083
 MonoBehaviour:
   m_ObjectHideFlags: 0
