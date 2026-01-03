@@ -10,7 +10,7 @@ namespace NovelGame
         public IconController icon;
 
         // 別クラスからGameManagerの変数を使えるようにする
-        public static NovelManager Instance { get; private set; }
+        //public static NovelManager Instance { get; private set; }
 
         //下流のスクリプト
         public UserScriptManager user_script_manager;
@@ -28,7 +28,7 @@ namespace NovelGame
         {
             //Debug.Log("OKノベルパートの初期化・セットアップが実行されました");
             // これで、別クラスからGameManagerの変数などを使えるようにする
-            Instance = this;
+            //Instance = this;
         }
 
 

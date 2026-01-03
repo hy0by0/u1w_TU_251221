@@ -9,6 +9,7 @@ namespace NovelGame
 {
     public class MemoryTextController : MonoBehaviour
     {
+        [SerializeField] private NovelManager novelManager;
         [SerializeField] TextMeshProUGUI _mainTextObject;
         [SerializeField] TextMeshProUGUI _nameTextObject;
         public bool isNovelReading = false; //テキスト表示処理を制御するためのフラグ。先走らせないための
@@ -74,7 +75,7 @@ namespace NovelGame
         /// <returns></returns>
         public bool CanGoToTheNextLine()
         {
-            string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence(); //ここが行早く進んでしまっている。
+            string sentence = novelManager.user_script_manager.GetCurrentSentence(); //ここが行早く進んでしまっている。
             string[] words = sentence.Split(',');
             //Debug.Log($"[{words[0]}]");
             string textsentence = words[2];
@@ -97,16 +98,16 @@ namespace NovelGame
             _mainTextObject.maxVisibleCharacters = 0;
 
             // 現在の行の値を増加
-            NovelManager.Instance.line_number++;
+            novelManager.line_number++;
 
             //現在の文を定義し、それが命令文であればそれを実行する
-            string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence(); //ここが行早く進んでしまっている。
-            if (NovelManager.Instance.user_script_manager.IsStatement(sentence))
+            string sentence = novelManager.user_script_manager.GetCurrentSentence(); //ここが行早く進んでしまっている。
+            if (novelManager.user_script_manager.IsStatement(sentence))
             {
                 //IsStateまでは正常にできているが、こここに来るまでに最初初期化再度されてしまっている
                 //Debug.Log("コマンド実行命令が下った！！");
                 // 命令文の実行をUserScriptManagerにて実行
-                NovelManager.Instance.user_script_manager.ExecuteStatement(sentence);
+                novelManager.user_script_manager.ExecuteStatement(sentence);
             }
 
         }
@@ -119,7 +120,7 @@ namespace NovelGame
         public void DisplayText()
         {
             //現在の文章をuserScriptManagerのGetCurrentSentenceで引っ張ってくる
-            string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence();
+            string sentence = novelManager.user_script_manager.GetCurrentSentence();
             //カンマ区切りで名前と本文をわける
             string[] words = sentence.Split(',');
 
@@ -146,12 +147,12 @@ namespace NovelGame
             //Debug.Log("OKテキストコントローラー初期化");
 
             // 最初の行のテキストを表示、または命令を実行
-            string statement = NovelManager.Instance.user_script_manager.GetCurrentSentence();
-            if (NovelManager.Instance.user_script_manager.IsStatement(statement)) //その行の文章命令文判定なら
+            string statement = novelManager.user_script_manager.GetCurrentSentence();
+            if (novelManager.user_script_manager.IsStatement(statement)) //その行の文章命令文判定なら
             {
                 //Debug.Log("最初は命令だあああああ");
                 // 命令文の実行をUserScriptManagerにて実行
-                NovelManager.Instance.user_script_manager.ExecuteStatement(statement);
+                novelManager.user_script_manager.ExecuteStatement(statement);
             }
 
             // 最初の行のテキストを表示

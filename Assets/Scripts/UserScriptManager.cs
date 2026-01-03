@@ -14,6 +14,8 @@ namespace NovelGame
     {
         [SerializeField] TextAsset _textFile; // テキストファイルを格納するための変数
 
+        [SerializeField] private NovelManager novelManager;
+
         private bool isRunning = false; // 実行状態かどうか
 
         List<string> _sentences = new List<string>(); // 読み込んだ文章を格納するリスト
@@ -40,7 +42,7 @@ namespace NovelGame
         public string GetCurrentSentence()
         {
             //Debug.Log(NovelManager.Instance.line_number); //おそらくline Numberの初期化がうまくいっていない？
-            return _sentences[NovelManager.Instance.line_number];
+            return _sentences[novelManager.line_number];
         }
 
 
@@ -93,7 +95,7 @@ namespace NovelGame
 
                     //Debug.Log("OK終了コマンドが読み込まれました");
                     StopRun();
-                    NovelManager.Instance.End();
+                    novelManager.End();
                     break;
 
                 case "putImage": // putImageステートメントの場合
@@ -103,14 +105,14 @@ namespace NovelGame
                     int img_x = ConvertToInt(words[5]);
                     int img_y = ConvertToInt(words[6]);
                     int scale_percent = ConvertToInt(words[7], 100);
-                    NovelManager.Instance.image_manager.PutImage(words[2], words[3], layerOrder, img_x, img_y, scale_percent); // 画像を表示する
-                    NovelManager.Instance.main_text_controller.GoToTheNextLine(); //次の行に進む
+                    novelManager.image_manager.PutImage(words[2], words[3], layerOrder, img_x, img_y, scale_percent); // 画像を表示する
+                    novelManager.main_text_controller.GoToTheNextLine(); //次の行に進む
                     break;
 
                 case "removeImage": // removeImageステートメントの場合
 
-                    NovelManager.Instance.image_manager.RemoveImage(words[2]); // 画像を削除する
-                    NovelManager.Instance.main_text_controller.GoToTheNextLine();
+                    novelManager.image_manager.RemoveImage(words[2]); // 画像を削除する
+                    novelManager.main_text_controller.GoToTheNextLine();
                     break;
 
                 default: //そうでない場合

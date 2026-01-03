@@ -2087,6 +2087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textFile: {fileID: 4900000, guid: 2bf7f177ba74f324ab51ca7427e6e815, type: 3}
+  novelManager: {fileID: 1195554895}
   isWaiting: 0
 --- !u!4 &40523580
 Transform:
@@ -5915,6 +5916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46279bc6e7626b64daa48a068b3cc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelManager: {fileID: 1195554895}
   _mainTextObject: {fileID: 133150951}
   _nameTextObject: {fileID: 389871694}
   isNovelReading: 0
@@ -8124,6 +8126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46279bc6e7626b64daa48a068b3cc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelManager: {fileID: 293243245}
   _mainTextObject: {fileID: 176726503}
   _nameTextObject: {fileID: 1692374147}
   isNovelReading: 0
@@ -18092,6 +18095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46279bc6e7626b64daa48a068b3cc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelManager: {fileID: 1990045144}
   _mainTextObject: {fileID: 361213345}
   _nameTextObject: {fileID: 1397434459}
   isNovelReading: 0
@@ -22495,7 +22499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: d1bdd50068c486447987fe819fc85306, type: 3}
+  _textFile: {fileID: 4900000, guid: 0a069307f2acd504da51ea932c4c5daf, type: 3}
+  novelManager: {fileID: 293243245}
   isWaiting: 0
 --- !u!4 &452569712
 Transform:
@@ -24581,7 +24586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 49919f8a670d87540af9f879bced86cb, type: 3}
+  _textFile: {fileID: 4900000, guid: b4623b4a0960c2d4ba5497ba30422a28, type: 3}
+  novelManager: {fileID: 631879500}
   isWaiting: 0
 --- !u!4 &485001804
 Transform:
@@ -32749,6 +32755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46279bc6e7626b64daa48a068b3cc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelManager: {fileID: 1275085473}
   _mainTextObject: {fileID: 651561236}
   _nameTextObject: {fileID: 784965213}
   isNovelReading: 0
@@ -54692,7 +54699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08e6bb55e3033a4ea20945fb74757fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textFile: {fileID: 4900000, guid: 284a16ae801728d4f8ed6bd4a8ec7299, type: 3}
+  _textFile: {fileID: 4900000, guid: 1e98d6da90cbff54dbbc03fd22711ef0, type: 3}
+  novelManager: {fileID: 158421012}
   isWaiting: 0
 --- !u!4 &1115506907
 Transform:
@@ -59128,6 +59136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textFile: {fileID: 4900000, guid: 8704072d0ddfacf4d81569c8f01603a0, type: 3}
+  novelManager: {fileID: 305657384}
   isWaiting: 0
 --- !u!4 &1212964124
 Transform:
@@ -73241,6 +73250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textFile: {fileID: 4900000, guid: ef72d83c998cb8744b4100d702f89b18, type: 3}
+  novelManager: {fileID: 1275085473}
   isWaiting: 0
 --- !u!4 &1496056901
 Transform:
@@ -92177,6 +92187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46279bc6e7626b64daa48a068b3cc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelManager: {fileID: 305657384}
   _mainTextObject: {fileID: 1895783107}
   _nameTextObject: {fileID: 1299697975}
   isNovelReading: 0
@@ -97717,6 +97728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46279bc6e7626b64daa48a068b3cc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelManager: {fileID: 631879500}
   _mainTextObject: {fileID: 1993066997}
   _nameTextObject: {fileID: 462086868}
   isNovelReading: 0
@@ -99426,6 +99438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textFile: {fileID: 4900000, guid: dc9f810f40b008849861640b5f682c3a, type: 3}
+  novelManager: {fileID: 1990045144}
   isWaiting: 0
 --- !u!4 &2017483529
 Transform:
@@ -101534,6 +101547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46279bc6e7626b64daa48a068b3cc090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  novelManager: {fileID: 158421012}
   _mainTextObject: {fileID: 2050271880}
   _nameTextObject: {fileID: 891671440}
   isNovelReading: 0
