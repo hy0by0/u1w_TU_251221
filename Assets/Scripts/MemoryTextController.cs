@@ -74,7 +74,7 @@ namespace NovelGame
         /// <returns></returns>
         public bool CanGoToTheNextLine()
         {
-            string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence();
+            string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence(); //ここが行早く進んでしまっている。
             string[] words = sentence.Split(',');
             //Debug.Log($"[{words[0]}]");
             string textsentence = words[2];
@@ -89,7 +89,8 @@ namespace NovelGame
         /// </summary>
         public void GoToTheNextLine()
         {
-            //Debug.Log("GoTONEXT");
+            //この関数が最初に３回も呼ばれてしまっている
+            Debug.Log("GoTONEXT");
             //値の初期化をする
             _displayedSentenceLength = 0;
             _time = 0f;
@@ -99,7 +100,7 @@ namespace NovelGame
             NovelManager.Instance.line_number++;
 
             //現在の文を定義し、それが命令文であればそれを実行する
-            string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence();
+            string sentence = NovelManager.Instance.user_script_manager.GetCurrentSentence(); //ここが行早く進んでしまっている。
             if (NovelManager.Instance.user_script_manager.IsStatement(sentence))
             {
                 //IsStateまでは正常にできているが、こここに来るまでに最初初期化再度されてしまっている

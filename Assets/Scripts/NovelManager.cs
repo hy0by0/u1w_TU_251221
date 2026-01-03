@@ -38,7 +38,7 @@ namespace NovelGame
         public void StartNovel()
         {
             //ここの関数が呼び出されていないために初期化がうまくできていない
-            //Debug.Log("OKノベルパート呼び出し関数！");
+            Debug.Log("OKノベルパート呼び出し関数！");
             // 進行状態の初期化
             line_number = 0;
 
@@ -52,7 +52,8 @@ namespace NovelGame
             main_text_controller.isNovelReading = true;
 
             // 最初の行を処理の実行開始！
-            main_text_controller.GoToTheNextLine();
+            //main_text_controller.GoToTheNextLine(); //これいらない？？？
+            //main_text_controller.DisplayText();
         }
 
 

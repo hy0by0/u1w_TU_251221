@@ -39,6 +39,7 @@ namespace NovelGame
         /// <returns></returns>
         public string GetCurrentSentence()
         {
+            //Debug.Log(NovelManager.Instance.line_number); //おそらくline Numberの初期化がうまくいっていない？
             return _sentences[NovelManager.Instance.line_number];
         }
 
