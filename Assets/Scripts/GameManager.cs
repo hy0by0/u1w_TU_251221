@@ -842,6 +842,7 @@ public class GameManager : MonoBehaviour
     IEnumerator GoTrueEnd()
     {
         imageCont.FadaIn("WhitePanel");
+        postProcess.SetActive(false);
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("TrueEnd");
     }
