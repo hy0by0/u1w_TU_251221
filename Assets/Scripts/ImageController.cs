@@ -6,8 +6,11 @@ using DG.Tweening;
 
 public class ImageController : MonoBehaviour
 {
-    [Header("白幕")]
-    public Image WhitePanel;
+
+    [Header("画面フェード遷移")]
+    public Image WhitePanel; //白幕
+    public float fadeInBlindTime = 0.5f; //盲目時に背景を遷移させる時間
+    public float fadeInWhiteTime = 1f; //白幕フェードインする時間
 
     [Header("主人公のスプライト差分集")]
     public Sprite normal;
@@ -29,18 +32,11 @@ public class ImageController : MonoBehaviour
     public Image CameraImage;
     public Image AddBackGround;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //image = this.gameObject.GetComponent<Image>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// メインキャラ画像を変更させる関数
+    /// </summary>
+    /// <param name="name"></param>
     public void ChangeCharaSprite(string name)
     {
         if (name == "ribborn_invisible")
@@ -69,6 +65,11 @@ public class ImageController : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// カメラウィンドウに表示される画像を変更する関数
+    /// </summary>
+    /// <param name="name"></param>
     public void ChangeCameraSprite(string name)
     {
         if (name == "indoor")
@@ -93,16 +94,21 @@ public class ImageController : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// 画像のフェードイン処理関数
+    /// </summary>
+    /// <param name="ImageName"></param>
     public void FadaIn(string ImageName)
     {
         if (ImageName == "AddBackGround")
         {
-            AddBackGround.DOFade(0.8f, 0.5f);
+            AddBackGround.DOFade(0.8f, fadeInBlindTime);
             
         }
         else if (ImageName == "WhitePanel")
         {
-            WhitePanel.DOFade(1f, 1f);
+            WhitePanel.DOFade(1f, fadeInWhiteTime);
         }
     }
 

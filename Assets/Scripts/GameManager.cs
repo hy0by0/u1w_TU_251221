@@ -11,37 +11,36 @@ public class GameManager : MonoBehaviour
     // ゲームのフェーズリスト
     public enum EventState
     {
-        //ここの構成変えるかも？
         Off,//ゲーム開始前時。画面クリックまでこの状態。
         Start, //ゲーム開始時演出。クリックされたらここ。
-        Memory_Intro, //メモリー最初。約束
-        SelfTalk_1, //最初の独白
+        Memory_Intro, //メモリー最初-約束
+        SelfTalk_1, //モノローグ最初の独白
         WaitDeleteAction_1, //削除タイム１
         FlagCheck_1, //遺品フラグ１-耳
-        SelfTalk_2,
-        Memory_Cat, //メモリー２つ目ネコ。
-        SelfTalk_3,
-        SelfTalk_4,
-        Memory_Cicada, //メモリー３つ目。セミ。
-        SelfTalk_5,
+        SelfTalk_2,  //モノローグネコ思い出前
+        Memory_Cat, //メモリー２つ目-ネコ。
+        SelfTalk_3, //モノローグネコ思い出後
+        SelfTalk_4, //モノローグセミ思い出前
+        Memory_Cicada, //メモリー３つ目-セミ。
+        SelfTalk_5, //モノローグセミ思い出後
         WaitDeleteAction_2, //削除タイム２
         FlagCheck_2, //遺品フラグ2-目。
-        SelfTalk_6,
-        Memory_Ribborn, //メモリー４つ目髪型。。
-        SelfTalk_7,
-        SelfTalk_8,
-        SelfTalk_8_1,
-        Memory_Fight, //メモリー５つ目。ケンカ。
-        SelfTalk_9,
-        SelfTalk_9_1,
+        SelfTalk_6, //モノローグリボン思い出前
+        Memory_Ribborn, //メモリー４つ目-髪型。。
+        SelfTalk_7, //モノローグリボン思い出後
+        SelfTalk_8, //モノローグケンカ思い出前
+        SelfTalk_9, //モノローグケンカ思い出前にすべてのメモリーが残っていた場合の追加テキスト
+        Memory_Fight, //メモリー５つ目-ケンカ。
+        SelfTalk_10, //モノローグケンカ思い出後
+        SelfTalk_11, //モノローグパス思い出前。パスを入力成功時のテキスト
         WaitDeleteAction_3, //削除タイム３ラスト
         FlagCheck_3, //遺品フラグ目＋パス？。
-        SelfTalk_10,
+        SelfTalk_12, //モノローグ日記思い出前
         CheckPassDiary, //日記パス
-        SelfTalk_10_1, //日記開いた場合モノローグ
+        SelfTalk_13, //日記開いた場合モノローグ
         Memory_Diaray, //メモリー６つ目-日記。
-        Memory_Pass, //メモリー７つ目、最期
-        SelfTalk_11, //必要かは不明。SadEndにまとめられるかも？
+        Memory_Pass, //メモリー７つ目-最期
+        //SelfTalk_14, //必要かは不明。SadEndにまとめられるかも？
         NormalEnd, //ノーマルエンド時。思い出も集めきれず、日記も見なかった場合
         SadEnd, //SADエンド時。懺悔
         TrueEnd //すべての思い出を取得するとTrueエンドへ
@@ -120,7 +119,7 @@ public class GameManager : MonoBehaviour
         //　リトライ用
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Load("SampleScene");
+            Load("MainScene");
         }
 
         // クリック音用
@@ -158,7 +157,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 //Debug.Log("対応オブジェクトリスト発見！！");
-                iconObj_A = iconParent.transform.Find("memory_intro").gameObject; //ここで結局見つけられてない
+                iconObj_A = iconParent.transform.Find("memory_intro").gameObject;
                 icon_A = iconObj_A.gameObject.GetComponent<IconController>();
 
                 if (icon_A.IsWatched)
@@ -220,7 +219,7 @@ public class GameManager : MonoBehaviour
         {
             if (monologue[2].isRead)
             {
-                Debug.Log("メモリーネコ開始！！");
+                Debug.Log("メモリー猫開始！！");
                 //鈴の音入れるならここかも
                 AddIcon("memory_cat");
                 eventState = EventState.Memory_Cat;
@@ -244,7 +243,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 //Debug.Log("対応オブジェクトリスト発見！！");
-                iconObj = iconParent.transform.Find("memory_cat").gameObject; //ここで結局見つけられてない
+                iconObj = iconParent.transform.Find("memory_cat").gameObject;
                 icon = iconObj.gameObject.GetComponent<IconController>();
 
                 if (icon.IsWatched)
@@ -291,7 +290,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                iconObj = iconParent.transform.Find("memory_cicada").gameObject; //ここで結局見つけられてない
+                iconObj = iconParent.transform.Find("memory_cicada").gameObject;
                 icon = iconObj.gameObject.GetComponent<IconController>();
 
                 if (icon.IsWatched)
@@ -370,7 +369,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 //Debug.Log("対応オブジェクトリスト発見！！");
-                iconObj = iconParent.transform.Find("memory_ribborn").gameObject; //ここで結局見つけられてない
+                iconObj = iconParent.transform.Find("memory_ribborn").gameObject;
                 icon = iconObj.gameObject.GetComponent<IconController>();
 
                 if (icon.IsWatched)
@@ -401,7 +400,7 @@ public class GameManager : MonoBehaviour
                 {
                     isAppearFinalMemory = true; //最後のメモリーが出現させられたフラグを立てておく（後のヒント用に）
                     monologue[18].ChangeActive(true);
-                    eventState = EventState.SelfTalk_8_1;
+                    eventState = EventState.SelfTalk_9;
                 }
                 else
                 {
@@ -412,7 +411,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else if (eventState == EventState.SelfTalk_8_1)
+        else if (eventState == EventState.SelfTalk_9)
         {
             if (monologue[18].isRead)
             {
@@ -437,7 +436,7 @@ public class GameManager : MonoBehaviour
                     AddIcon("memory_pass");
                 }
                 monologue[10].ChangeActive(true);
-                eventState = EventState.SelfTalk_9;
+                eventState = EventState.SelfTalk_10;
             }
             else
             {
@@ -451,7 +450,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_9)
+        else if (eventState == EventState.SelfTalk_10)
         {
             if (monologue[10].isRead)
             {
@@ -459,7 +458,7 @@ public class GameManager : MonoBehaviour
                 {
                     //Debug.Log("モノローグ3が終了しました！");
                     monologue[19].ChangeActive(true);
-                    eventState = EventState.SelfTalk_9_1;
+                    eventState = EventState.SelfTalk_11;
                 }
                 else
                 {
@@ -472,7 +471,7 @@ public class GameManager : MonoBehaviour
 
 
         }
-        else if (eventState == EventState.SelfTalk_9_1)
+        else if (eventState == EventState.SelfTalk_11)
         {
             if (monologue[19].isRead)
             {
@@ -522,7 +521,7 @@ public class GameManager : MonoBehaviour
                     imageCont.ChangeCameraSprite("diary");
                     OpenCameraWindow();
                     monologue[12].ChangeActive(true);
-                    eventState = EventState.SelfTalk_10;
+                    eventState = EventState.SelfTalk_12;
                 }
                 else
                 {
@@ -535,7 +534,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else if (eventState == EventState.SelfTalk_10)
+        else if (eventState == EventState.SelfTalk_12)
         {
             if (monologue[12].isRead)
             {
@@ -550,7 +549,7 @@ public class GameManager : MonoBehaviour
             if (passManager.isOpen)
             {
                 monologue[13].ChangeActive(true);
-                eventState = EventState.SelfTalk_10_1;
+                eventState = EventState.SelfTalk_13;
             }
             else if(passManager.isFaild)
             {
@@ -562,7 +561,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_10_1)
+        else if (eventState == EventState.SelfTalk_13)
         {
             if (monologue[13].isRead)
             {
@@ -746,47 +745,39 @@ public class GameManager : MonoBehaviour
             imageCont.FadaIn("AddBackGround");
             canWatch = false;
         }
-        else if (name == "sound")
+        if (name == "sound")
         {
             soundManager.SetBGMVolume(0.0f);
             canHear = false;
         }
-        else if (name == "memory_intro")
-        {
-            WatchMemoryIntro = false;
-        }
-        else if (name == "memory_cat")
-        {
-            WatchMemoryCat = false;
-        }
-        else if (name == "memory_cicada")
-        {
-            WatchMemoryCicada = false;
-        }
-        else if (name == "memory_ribborn")
-        {
-            WatchMemoryRibborn = false;
-        }
-        else if (name == "memory_fight")
-        {
-            WatchMemoryFight = false;
-        }
-        else if (name == "memory_pass")
-        {
-            WatchMemoryPass = false;
-        }
+        if (name == "memory_intro") WatchMemoryIntro = false;
+        if (name == "memory_cat") WatchMemoryCat = false;
+        if (name == "memory_cicada") WatchMemoryCicada = false;
+        if (name == "memory_ribborn") WatchMemoryRibborn = false;
+        if (name == "memory_fight") WatchMemoryFight = false;
+        if (name == "memory_pass") WatchMemoryPass = false;
+
+        return;
     }
 
 
+    /// <summary>
+    /// 音声開始処理
+    /// </summary>
+    /// <returns></returns>
     IEnumerator PlaySound()
     {
+        //web版では、ゲームの音が反映されるまでに少しラグがあるため、サウンド開始前に少し待機させる
         yield return new WaitForSeconds(1.3f); //ウェブ上で音が反映されるまで待機させる
         pcSound.SetActive(true); //PC起動音開始
-        yield return new WaitForSeconds(1.0f); //起動して遅れて環境音も聞こえるようにする
-        soundManager.PlaySound(); //サウンド開始
+        yield return new WaitForSeconds(1.0f); //起動して遅れてメインサウンドも聞こえるようにする
+        soundManager.PlaySound(); //メインサウンド開始
     }
 
 
+    /// <summary>
+    /// カメラアプリを開く関数
+    /// </summary>
     public void OpenCameraWindow()
     {
         if (canWatch)
@@ -797,6 +788,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// エンド処理関数
+    /// </summary>
+    /// <param name="name"></param>
     public void GoEnd(string name)
     {
         if (name == null)
@@ -808,12 +803,7 @@ public class GameManager : MonoBehaviour
             isEnd = true;
             StartCoroutine(GoTrueEnd());
         }
-        else if (name == "sad")
-        {
-            isEnd = true;
-            Load("SadEnd");
-        }
-        else if (name == "normal")
+        else
         {
             isEnd = true;
             Load("SadEnd");
@@ -839,10 +829,17 @@ public class GameManager : MonoBehaviour
             
     }
 
+    /// <summary>
+    /// トゥルーエンドシーン遷移処理関数
+    /// </summary>
+    /// <returns></returns>
     IEnumerator GoTrueEnd()
     {
+        //フェードアウト演出
         imageCont.FadaIn("WhitePanel");
         postProcess.SetActive(false);
+
+        //フェードアウト処理終了まで待機後、Trueエンドシーン遷移
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("TrueEnd");
     }
