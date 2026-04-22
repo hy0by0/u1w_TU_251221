@@ -100447,6 +100447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WhitePanel: {fileID: 846646612}
+  fadeInBlindTime: 0.5
+  fadeInWhiteTime: 1
   normal: {fileID: 21300000, guid: 8b2a15d0c66eeea4eb73119bab3ffe60, type: 3}
   invisible: {fileID: 21300000, guid: 61a95cab8e46e7f49a43c34979be8174, type: 3}
   ribborn: {fileID: 21300000, guid: 4b80957ec5796be4dbbebac4c1eb6d9d, type: 3}

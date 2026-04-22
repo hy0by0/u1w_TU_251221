@@ -14,77 +14,76 @@ public class GameManager : MonoBehaviour
         Off,//ゲーム開始前時。画面クリックまでこの状態。
         Start, //ゲーム開始時演出。クリックされたらここ。
         Memory_Intro, //メモリー最初-約束
-        SelfTalk_1, //モノローグ最初の独白
-        WaitDeleteAction_1, //削除タイム１
-        FlagCheck_1, //遺品フラグ１-耳
-        SelfTalk_2,  //モノローグネコ思い出前
-        Memory_Cat, //メモリー２つ目-ネコ。
-        SelfTalk_3, //モノローグネコ思い出後
-        SelfTalk_4, //モノローグセミ思い出前
-        Memory_Cicada, //メモリー３つ目-セミ。
-        SelfTalk_5, //モノローグセミ思い出後
-        WaitDeleteAction_2, //削除タイム２
+        SelfTalk_Prologue, //モノローグ最初の独白
+        WaitDeleteAction_1, //削除タイム1回目
+        FlagCheck_1, //遺品フラグ1-耳
+        SelfTalk_BeforeCat,  //モノローグネコ思い出前
+        Memory_Cat, //メモリー2つ目-ネコ。
+        SelfTalk_AfterCat, //モノローグネコ思い出後
+        SelfTalk_BeforeCicada, //モノローグセミ思い出前
+        Memory_Cicada, //メモリー3つ目-セミ。
+        SelfTalk_AfterCicada, //モノローグセミ思い出後
+        WaitDeleteAction_2, //削除タイム2回目
         FlagCheck_2, //遺品フラグ2-目。
-        SelfTalk_6, //モノローグリボン思い出前
-        Memory_Ribborn, //メモリー４つ目-髪型。。
-        SelfTalk_7, //モノローグリボン思い出後
-        SelfTalk_8, //モノローグケンカ思い出前
-        SelfTalk_9, //モノローグケンカ思い出前にすべてのメモリーが残っていた場合の追加テキスト
-        Memory_Fight, //メモリー５つ目-ケンカ。
-        SelfTalk_10, //モノローグケンカ思い出後
-        SelfTalk_11, //モノローグパス思い出前。パスを入力成功時のテキスト
-        WaitDeleteAction_3, //削除タイム３ラスト
+        SelfTalk_BeforeRibborn, //モノローグリボン思い出前
+        Memory_Ribborn, //メモリー4つ目-髪型。。
+        SelfTalk_AfterRibborn, //モノローグリボン思い出後
+        SelfTalk_BeforeFight, //モノローグケンカ思い出前
+        SelfTalk_FindFInalMemory, //モノローグケンカ思い出前にすべてのメモリーが残っていた場合の追加テキスト
+        Memory_Fight, //メモリー5つ目-ケンカ。
+        SelfTalk_AfterFight, //モノローグケンカ思い出後
+        SelfTalk_SuccesPass, //モノローグパス思い出前。パスを入力成功時のテキスト
+        WaitDeleteAction_3, //削除タイム3ラスト
         FlagCheck_3, //遺品フラグ目＋パス？。
-        SelfTalk_12, //モノローグ日記思い出前
+        SelfTalk_BeforeDiary, //モノローグ日記思い出前
         CheckPassDiary, //日記パス
-        SelfTalk_13, //日記開いた場合モノローグ
-        Memory_Diaray, //メモリー６つ目-日記。
-        Memory_Pass, //メモリー７つ目-最期
-        //SelfTalk_14, //必要かは不明。SadEndにまとめられるかも？
+        SelfTalk_AfterDiary, //日記開いた場合モノローグ
+        Memory_Diaray, //メモリー6つ目-日記。
+        Memory_Pass, //メモリー7つ目-最期
         NormalEnd, //ノーマルエンド時。思い出も集めきれず、日記も見なかった場合
         SadEnd, //SADエンド時。懺悔
         TrueEnd //すべての思い出を取得するとTrueエンドへ
     }
 
     [Header("メインキャラ")]
-    [SerializeField] private ImageController imageCont;
+    [SerializeField] private ImageController imageCont; //画像の変更管理用
 
     [Header("SoundManager入力")]
-    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private SoundManager soundManager; //音の管理用
 
     [Header("SoundManager入力")]
-    public EventState eventState = EventState.Off;
+    public EventState eventState = EventState.Off;  //現在のイベント状態を管理する変数。最初は「Off」にしておく。
 
     [Header("必要なオブジェクト入れる")]
-    public Image OffImage;
-    public GameObject pcSound;
-    public PassManager passManager;
+    public Image OffImage; //ゲーム開始前の画面全体を覆う画像。クリックされたらフェードアウトさせる。
+    public GameObject pcSound; //PC起動音用オブジェクト
+    public PassManager passManager; //日記のパス入力管理用オブジェクト
     public MonologueController[] monologue; //モノローグ用
     public ErrorWindowManager errorWinManager; //エラーウィンドウの表示非表示用
-    public GameObject postProcess;
+    public GameObject postProcess;  //ポストプロセス管理用オブジェクト
 
-    private bool isTrashed = false;
+    private bool isTrashed = false; //削除タイム中に削除が完了されたか
     private bool isEnd = false; //エンド迎えるかどうか
 
     [SerializeField] private Transform iconParent; //アイコンらの親オブジェクト
 
-    [Header("フラグチェッカー")]
+    [Header("管理するフラグ一覧")]
     public bool canWatch = true; //見えるかどうか
     public bool canHear = true; //聞こえるかどうか
-    public static bool isFindDiary = false;
-    public static bool isAppearFinalMemory = false;
-    public static bool WatchMemoryIntro = false; //思い出Aの既読があるかどうか
-    public static bool WatchMemoryCat = false;
-    public static bool WatchMemoryCicada = false;
-    public static bool WatchMemoryRibborn = false;
-    public static bool WatchMemoryFight = false;
-    public static bool WatchMemoryPass = false;
-    public static bool WatchMemoryDiary = false;
+    public static bool isFindDiary = false; //日記を発見したかどうか（後のヒント用に）
+    public static bool isAppearFinalMemory = false; //最後のメモリーが出現させられたかどうか（後のヒント用に）
+    public static bool WatchMemoryIntro = false; //導入メモリーの既読
+    public static bool WatchMemoryCat = false;      //猫メモリーの既読
+    public static bool WatchMemoryCicada = false;   //セミメモリーの既読
+    public static bool WatchMemoryRibborn = false; //リボンメモリーの既読
+    public static bool WatchMemoryFight = false;    //ケンカメモリーの既読
+    public static bool WatchMemoryPass = false;     //パスで隠された最後のメモリーの既読
+    public static bool WatchMemoryDiary = false;    //日記メモリーの既読
 
     //アイコンに紐づいたウィンドウオブジェクトとタグのペアリストを取得。オブジェクトの呼び出し用に。
     public List<IconPairData> objectPairs = new List<IconPairData>();
 
-    public static GameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }    //シングルトン用インスタンス
 
 
     private void Awake()
@@ -152,7 +151,7 @@ public class GameManager : MonoBehaviour
                 imageCont.ChangeCameraSprite("outdoor");
                 OpenCameraWindow();
                 monologue[0].ChangeActive(true);
-                eventState = EventState.SelfTalk_1;
+                eventState = EventState.SelfTalk_Prologue;
             }
             else
             {
@@ -169,7 +168,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_1)
+        else if (eventState == EventState.SelfTalk_Prologue)
         {
             if (monologue[0].isRead)
             {
@@ -203,19 +202,19 @@ public class GameManager : MonoBehaviour
                     OpenCameraWindow();
                     soundManager.PlaySE("bell");
                     monologue[2].ChangeActive(true);
-                    eventState = EventState.SelfTalk_2;
+                    eventState = EventState.SelfTalk_BeforeCat;
                 }
                 else
                 {
                     Debug.Log("モノローグセミ思い出前へ");
                     imageCont.ChangeCameraSprite("indoor");
                     monologue[4].ChangeActive(true);
-                    eventState = EventState.SelfTalk_4;
+                    eventState = EventState.SelfTalk_BeforeCicada;
                 }
 
             }
         }
-        else if (eventState == EventState.SelfTalk_2)
+        else if (eventState == EventState.SelfTalk_BeforeCat)
         {
             if (monologue[2].isRead)
             {
@@ -238,7 +237,7 @@ public class GameManager : MonoBehaviour
                 imageCont.ChangeCameraSprite("outdoor");
                 OpenCameraWindow();
                 monologue[3].ChangeActive(true);
-                eventState = EventState.SelfTalk_3;
+                eventState = EventState.SelfTalk_AfterCat;
             }
             else
             {
@@ -255,18 +254,18 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_3)
+        else if (eventState == EventState.SelfTalk_AfterCat)
         {
             if (monologue[3].isRead)
             {
                 imageCont.ChangeCameraSprite("indoor");
                 OpenCameraWindow();
                 monologue[4].ChangeActive(true);
-                eventState = EventState.SelfTalk_4;
+                eventState = EventState.SelfTalk_BeforeCicada;
             }
 
         }
-        else if (eventState == EventState.SelfTalk_4)
+        else if (eventState == EventState.SelfTalk_BeforeCicada)
         {
             if (monologue[4].isRead)
             {
@@ -286,7 +285,7 @@ public class GameManager : MonoBehaviour
                 imageCont.ChangeCameraSprite("outdoor");
                 OpenCameraWindow();
                 monologue[5].ChangeActive(true);
-                eventState = EventState.SelfTalk_5;
+                eventState = EventState.SelfTalk_AfterCicada;
             }
             else
             {
@@ -301,7 +300,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_5)
+        else if (eventState == EventState.SelfTalk_AfterCicada)
         {
             if (monologue[5].isRead)
             {
@@ -331,19 +330,19 @@ public class GameManager : MonoBehaviour
                     imageCont.ChangeCameraSprite("ribborn");
                     OpenCameraWindow();
                     monologue[7].ChangeActive(true);
-                    eventState = EventState.SelfTalk_6;
+                    eventState = EventState.SelfTalk_BeforeRibborn;
                 }
                 else
                 {
                     imageCont.ChangeCameraSprite("indoor");
                     OpenCameraWindow();
                     monologue[9].ChangeActive(true);
-                    eventState = EventState.SelfTalk_8;
+                    eventState = EventState.SelfTalk_BeforeFight;
                 }
 
             }
         }
-        else if (eventState == EventState.SelfTalk_6)
+        else if (eventState == EventState.SelfTalk_BeforeRibborn)
         {
             if (monologue[7].isRead)
             {
@@ -364,7 +363,7 @@ public class GameManager : MonoBehaviour
                 imageCont.ChangeCameraSprite("outdoor");
                 OpenCameraWindow();
                 monologue[8].ChangeActive(true);
-                eventState = EventState.SelfTalk_7;
+                eventState = EventState.SelfTalk_AfterRibborn;
             }
             else
             {
@@ -380,18 +379,18 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_7)
+        else if (eventState == EventState.SelfTalk_AfterRibborn)
         {
             if (monologue[8].isRead)
             {
                 imageCont.ChangeCameraSprite("indoor");
                 OpenCameraWindow();
                 monologue[9].ChangeActive(true);
-                eventState = EventState.SelfTalk_8;
+                eventState = EventState.SelfTalk_BeforeFight;
             }
 
         }
-        else if (eventState == EventState.SelfTalk_8)
+        else if (eventState == EventState.SelfTalk_BeforeFight)
         {
             if (monologue[9].isRead)
             {
@@ -400,7 +399,7 @@ public class GameManager : MonoBehaviour
                 {
                     isAppearFinalMemory = true; //最後のメモリーが出現させられたフラグを立てておく（後のヒント用に）
                     monologue[18].ChangeActive(true);
-                    eventState = EventState.SelfTalk_9;
+                    eventState = EventState.SelfTalk_FindFInalMemory;
                 }
                 else
                 {
@@ -411,7 +410,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else if (eventState == EventState.SelfTalk_9)
+        else if (eventState == EventState.SelfTalk_FindFInalMemory)
         {
             if (monologue[18].isRead)
             {
@@ -436,7 +435,7 @@ public class GameManager : MonoBehaviour
                     AddIcon("memory_pass");
                 }
                 monologue[10].ChangeActive(true);
-                eventState = EventState.SelfTalk_10;
+                eventState = EventState.SelfTalk_AfterFight;
             }
             else
             {
@@ -450,7 +449,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_10)
+        else if (eventState == EventState.SelfTalk_AfterFight)
         {
             if (monologue[10].isRead)
             {
@@ -458,7 +457,7 @@ public class GameManager : MonoBehaviour
                 {
                     //Debug.Log("モノローグ3が終了しました！");
                     monologue[19].ChangeActive(true);
-                    eventState = EventState.SelfTalk_11;
+                    eventState = EventState.SelfTalk_SuccesPass;
                 }
                 else
                 {
@@ -471,7 +470,7 @@ public class GameManager : MonoBehaviour
 
 
         }
-        else if (eventState == EventState.SelfTalk_11)
+        else if (eventState == EventState.SelfTalk_SuccesPass)
         {
             if (monologue[19].isRead)
             {
@@ -521,7 +520,7 @@ public class GameManager : MonoBehaviour
                     imageCont.ChangeCameraSprite("diary");
                     OpenCameraWindow();
                     monologue[12].ChangeActive(true);
-                    eventState = EventState.SelfTalk_12;
+                    eventState = EventState.SelfTalk_BeforeDiary;
                 }
                 else
                 {
@@ -534,7 +533,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else if (eventState == EventState.SelfTalk_12)
+        else if (eventState == EventState.SelfTalk_BeforeDiary)
         {
             if (monologue[12].isRead)
             {
@@ -549,7 +548,7 @@ public class GameManager : MonoBehaviour
             if (passManager.isOpen)
             {
                 monologue[13].ChangeActive(true);
-                eventState = EventState.SelfTalk_13;
+                eventState = EventState.SelfTalk_AfterDiary;
             }
             else if(passManager.isFaild)
             {
@@ -561,7 +560,7 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        else if (eventState == EventState.SelfTalk_13)
+        else if (eventState == EventState.SelfTalk_AfterDiary)
         {
             if (monologue[13].isRead)
             {
