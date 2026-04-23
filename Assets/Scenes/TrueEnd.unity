@@ -794,7 +794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HyoByo
+  m_text: "\u4E2D\u6751\u5D69"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52fe24f6f4aa5f844895dbbfaa91c098, type: 2}
   m_sharedMaterial: {fileID: -8993983762149797227, guid: 52fe24f6f4aa5f844895dbbfaa91c098, type: 2}
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dfa2c5703d313e42b7746058f073faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://x.com/hy0by0
+  url: https://drive.google.com/drive/folders/1Jr2gAMn3YbP6zIfTgpR6eH4uOr06oYDY?usp=drive_link
 --- !u!114 &635087902
 MonoBehaviour:
   m_ObjectHideFlags: 0
